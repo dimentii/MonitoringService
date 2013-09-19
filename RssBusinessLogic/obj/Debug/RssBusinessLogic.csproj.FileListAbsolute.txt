@@ -1,0 +1,12 @@
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\RssBusinessLogic.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\RssBusinessLogic.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\RssDataAccessLayer.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\RssDataAccessLayer.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\obj\Debug\RssBusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\obj\Debug\RssBusinessLogic.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\obj\Debug\RssBusinessLogic.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\WebsiteWorkers.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\WebsiteWorkers.pdb

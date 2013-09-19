@@ -1,0 +1,8 @@
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\bin\Debug\WebsiteWorkers.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\bin\Debug\WebsiteWorkers.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\obj\Debug\WebsiteWorkers.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\obj\Debug\WebsiteWorkers.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\obj\Debug\WebsiteWorkers.csprojResolveAssemblyReference.cache
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\WebsiteWorkers\bin\Debug\HtmlAgilityPack.xml
