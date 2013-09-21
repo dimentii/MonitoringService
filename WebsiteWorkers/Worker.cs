@@ -18,8 +18,7 @@ namespace WebsiteWorkers
 
             if (articleNode == null)
             {
-                var descriptionNode = GetAlternateNode(document);
-                return descriptionNode.GetAttributeValue("content", "Not found");
+                return GetDescriptionOnlyText(document);
             }
 
             var result = new StringBuilder();
@@ -31,6 +30,11 @@ namespace WebsiteWorkers
             }
 
             var nodes = GetAtricleNodes(articleNode);
+
+            if (nodes == null)
+            {
+                return "Only Description" + GetDescriptionOnlyText(document);
+            }
             
             result.Append(GrabText(nodes));
 
@@ -64,6 +68,13 @@ namespace WebsiteWorkers
         private HtmlNode GetAlternateNode(HtmlDocument document)
         {
             return document.DocumentNode.SelectSingleNode("//meta[@name='description']");
+        }
+
+        private String GetDescriptionOnlyText(HtmlDocument document)
+        {
+            var descriptionNode = GetAlternateNode(document);
+            return descriptionNode.GetAttributeValue("content", "Not found");
+
         }
     }
 }

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace RssBusinessLogic.Interfaces
 {
-    public interface IRssWriter
+    public interface IWebsiteLoader
     {
-        Task HandleRss(String table, String xml);
+        Task<ArticleData> GetWebDocumentAsync(String link);
     }
 }

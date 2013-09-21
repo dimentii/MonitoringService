@@ -1,1 +1,0 @@
-Невозможно разрешить удаленное имя: 'kommersant.ru' Occured at: RssHandler. Incorrect link: http://kommersant.ru/rss/daily.xml

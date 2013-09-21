@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using WebsiteWorkers;
+using RssDataAccessLayer.Interfaces;
 
 namespace RssDataAccessLayer
 {
-    public class DataAccessLayer
+    public class DataAccessLayer : IDataAccessLayer
     {
+        #region Fields
+
         private const String ConnectionString = @"Server=dydewkipc\sqlexpress;Database=RSS;Trusted_Connection=True";
 
+        #endregion
+
+        #region Methods
+
         // Fill database and return only new articles' links
-        public async Task<List<String>> FillRssAsync(String sqlCommandString, GetArticleLink getArticleLink)
+        public async Task<List<String>> FillRssAsync(String sqlCommandString,
+                                                     Func<DbDataReader, Task<String>> getArticleLink)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
@@ -40,13 +48,15 @@ namespace RssDataAccessLayer
             {
                 await connection.OpenAsync();
                 var command = new SqlCommand
-                {
-                    Connection = connection,
-                    CommandText = sqlCommandString
-                };
+                    {
+                        Connection = connection,
+                        CommandText = sqlCommandString
+                    };
 
                 return await command.ExecuteNonQueryAsync();
             }
         }
+
+        #endregion
     }
 }

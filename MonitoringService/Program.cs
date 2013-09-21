@@ -1,4 +1,7 @@
 ﻿using System.ServiceProcess;
+using MonitoringService.NinjectModules;
+using Ninject;
+using RssBusinessLogic.NinjectModules;
 
 namespace MonitoringService
 {
@@ -9,10 +12,13 @@ namespace MonitoringService
         /// </summary>
         static void Main()
         {
+            var kernel = new StandardKernel(new ServiceInjectionModule(), new BusinessLogicInjectionModule());
+            var handler = kernel.Get<RssHandler>();
+            
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                new MonitoringService() 
+                new MonitoringService(handler) 
             };
             ServiceBase.Run(ServicesToRun);
         }

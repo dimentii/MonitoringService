@@ -36,6 +36,9 @@
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -48,7 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleData.cs" />
-    <Compile Include="Interfaces\IRssWriter.cs" />
+    <Compile Include="Interfaces\IDatabaseWorker.cs" />
+    <Compile Include="Interfaces\IBusinessLogic.cs" />
+    <Compile Include="Interfaces\IWebsiteLoader.cs" />
+    <Compile Include="Interfaces\IWebsiteParser.cs" />
+    <Compile Include="NinjectModules\BusinessLogicInjectionModule.cs" />
     <Compile Include="ReportData.cs" />
     <Compile Include="WebsiteInput.cs" />
     <Compile Include="WebsiteLoader.cs" />
@@ -70,6 +77,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

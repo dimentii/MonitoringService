@@ -16,3 +16,6 @@ C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\obj\Debug\MonitoringService.MonitoringService.resources
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\obj\Debug\MonitoringService.ProjectInstaller.resources
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\obj\Debug\MonitoringService.csproj.GenerateResource.Cache
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\Ninject.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\Ninject.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\Ninject.xml

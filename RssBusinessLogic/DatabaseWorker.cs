@@ -1,20 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RssBusinessLogic.Interfaces;
 using RssDataAccessLayer;
-using WebsiteWorkers;
+using RssDataAccessLayer.Interfaces;
 
 namespace RssBusinessLogic
 {
-    internal class DatabaseWorker
+    class DatabaseWorker : IDatabaseWorker
     {
-        // IoC
-        private readonly DataAccessLayer _dataAccessLayer = new DataAccessLayer();
+        #region Fields
+
+        private readonly IDataAccessLayer _dataAccessLayer;
+
+        #endregion
+
+        #region Constructors
+
+        public DatabaseWorker(IDataAccessLayer dataAccessLayer)
+        {
+            _dataAccessLayer = dataAccessLayer;
+        }
+
+        #endregion
+
+        #region Methods
+
+        #region Public
 
         // Make sql query which checks if input data is already in table and return List of article's links 
-        public async Task<List<String>> FillDbWithRssAsync(String table, String xmlRss, GetArticleLink getArticleLink)
+        public async Task<List<String>> FillDbWithRssAsync(String table, String xmlRss,
+                                                           Func<DbDataReader, Task<String>> getArticleLink)
         {
             if (xmlRss == null)
                 return null;
@@ -25,7 +45,7 @@ namespace RssBusinessLogic
             var list = await _dataAccessLayer.FillRssAsync(sqlCommandString, getArticleLink);
             return list.ToList();
         }
-        
+
         // Create sql query which fills database with complete articles and additional data
         public async Task<Int32> FillDbWithCompleteArticleAsync(String table, CompleteArticleData[] data)
         {
@@ -34,11 +54,18 @@ namespace RssBusinessLogic
                 Console.WriteLine("No new articles");
                 return 0;
             }
-            var sqlCommandString = String.Format("use final if object_id('[dbo].[{0}]') is null create table {0} (ID	int	not null identity(1,1), Link nvarchar(200), Article nvarchar(max) constraint PK_{0} Primary Key(ID)) insert into [dbo].[{0}] (Link, Article) values {1}", table, ConvertAtricleDataToString(data));
+            var sqlCommandString =
+                String.Format(
+                    "use final if object_id('[dbo].[{0}]') is null create table {0} (ID	int	not null identity(1,1), Link nvarchar(200), Article nvarchar(max) constraint PK_{0} Primary Key(ID)) insert into [dbo].[{0}] (Link, Article) values {1}",
+                    table, ConvertAtricleDataToString(data));
             return await _dataAccessLayer.FillDataAsync(sqlCommandString);
         }
 
-        // Helper to build query
+        #endregion
+
+        #region Private
+
+    // Helper to build query
         private static String ConvertAtricleDataToString(IEnumerable<CompleteArticleData> articles)
         {
             var stringBuilder = new StringBuilder();
@@ -51,5 +78,9 @@ namespace RssBusinessLogic
             stringBuilder.Length--;
             return stringBuilder.ToString();
         }
+
+        #endregion
+
+        #endregion
     }
 }

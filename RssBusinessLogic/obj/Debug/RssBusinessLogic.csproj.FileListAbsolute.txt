@@ -10,3 +10,6 @@ C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\HtmlAgilityPack.xml
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\WebsiteWorkers.dll
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\WebsiteWorkers.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\Ninject.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\Ninject.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssBusinessLogic\bin\Debug\Ninject.xml

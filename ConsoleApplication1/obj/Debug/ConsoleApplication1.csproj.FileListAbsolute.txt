@@ -13,3 +13,6 @@ C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\ConsoleApplicatio
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\ConsoleApplication1\bin\Debug\HtmlAgilityPack.xml
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\ConsoleApplication1\bin\Debug\WebsiteWorkers.dll
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\ConsoleApplication1\bin\Debug\WebsiteWorkers.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\ConsoleApplication1\bin\Debug\Ninject.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\ConsoleApplication1\bin\Debug\Ninject.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\ConsoleApplication1\bin\Debug\Ninject.xml
