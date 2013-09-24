@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Data.Common;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
 
 namespace WebsiteWorkers
 {
-    public interface IWorker
+    public interface IDbWorker
     {
         Task<String> GetLink(DbDataReader reader);
-        String GetText(HtmlDocument document);
+        String GetIdentifyingQuery();
     }
 }

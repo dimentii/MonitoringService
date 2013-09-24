@@ -1,0 +1,3 @@
+Невозможно разрешить удаленное имя: 'kommersant.ru' Occured at: RssHandler. Incorrect link: http://kommersant.ru/rss/daily.xml
+Невозможно разрешить удаленное имя: 'izvestia.ru' Occured at: RssHandler. Incorrect link: http://izvestia.ru/xml/rss/all.xml
+Невозможно разрешить удаленное имя: 'k.img.com.ua' Occured at: RssHandler. Incorrect link: http://k.img.com.ua/rss/ru/news.xml

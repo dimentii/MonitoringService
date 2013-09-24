@@ -36,11 +36,12 @@ namespace RssBusinessLogic
 
         // First, fill Database with data which was got as xml string. Then fill Database with
         // filtered and prepared articles Then get newspaper and number of added articles.
-        public async Task<ReportData> ProcessData(String table, String xml, IWorker worker)
+        public async Task<ReportData> ProcessData<TWorker>(String table, String xml, TWorker worker)
+            where TWorker: IDbWorker, IWebWorker
         {
             try
             {
-                var htmlDocuments = Task.WhenAll((await _databaseWorker.FillDbWithRssAsync(table, xml, worker.GetLink))
+                var htmlDocuments = Task.WhenAll((await _databaseWorker.FillDbWithRssAsync(table, xml, worker))
                                                      .Select(
                                                          async rssDataArticle =>
                                                          await GetArticleAsync(rssDataArticle, worker.GetText)));

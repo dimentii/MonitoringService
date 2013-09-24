@@ -6,6 +6,7 @@ namespace RssBusinessLogic.Interfaces
 {
     public interface IBusinessLogic
     {
-        Task<ReportData> ProcessData(String table, String xml, IWorker worker);
+        Task<ReportData> ProcessData<TWorker>(String table, String xml, TWorker worker)
+            where TWorker : IDbWorker, IWebWorker;
     }
 }

@@ -7,6 +7,7 @@ using System.Xml;
 using ConsoleApplication1.Interfaces;
 using RssBusinessLogic;
 using RssBusinessLogic.Interfaces;
+using WebsiteWorkers;
 using WebsiteWorkers.Workers;
 
 namespace ConsoleApplication1
@@ -18,9 +19,9 @@ namespace ConsoleApplication1
         // Field for list of websites
         private readonly List<WebsiteInput> _websiteInputs = new List<WebsiteInput>
             {
-                new WebsiteInput("Kommersant", "http://kommersant.ru/rss/daily.xml", new KommersantRu()),
-                new WebsiteInput("Izvestia", "http://izvestia.ru/xml/rss/all.xml", new IzvestiaRu()),
-                new WebsiteInput("Korrespondent", "http://k.img.com.ua/rss/ru/news.xml", new KorrespondentNet())
+                new WebsiteInput("Kommersant", "http://kommersant.ru/rss/daily.xml", new KommersantRu(Identifier.Guid)),
+                new WebsiteInput("Izvestia", "http://izvestia.ru/xml/rss/all.xml", new IzvestiaRu(Identifier.Link)),
+                new WebsiteInput("Korrespondent", "http://k.img.com.ua/rss/ru/news.xml", new KorrespondentNet(Identifier.Link))
             };
 
         private readonly IBusinessLogic _businessLogic;

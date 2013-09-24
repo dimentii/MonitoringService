@@ -5,7 +5,7 @@ namespace RssBusinessLogic
 {
     public class WebsiteInput
     {
-        public WebsiteInput(String newspaper, String xmlLink, IWorker worker)
+        public WebsiteInput(String newspaper, String xmlLink, Worker worker)
         {
             Newspaper = newspaper;
             XmlLink = xmlLink;
@@ -14,6 +14,6 @@ namespace RssBusinessLogic
 
         public String XmlLink { get; set; }
         public String Newspaper { get; set; }
-        public IWorker Worker { get; set; }
+        public Worker Worker { get; set; }
     }
 }

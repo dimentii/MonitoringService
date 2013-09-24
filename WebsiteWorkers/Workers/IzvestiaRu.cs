@@ -7,6 +7,17 @@ namespace WebsiteWorkers.Workers
 {
     public class IzvestiaRu : Worker
     {
+        #region Constructor
+
+        public IzvestiaRu(Identifier identifier)
+            : base(identifier)
+        {
+        }
+
+        #endregion
+
+        #region Methods
+
         public override async Task<String> GetLink(DbDataReader reader)
         {
             return await reader.GetFieldValueAsync<String>(1);
@@ -26,5 +37,7 @@ namespace WebsiteWorkers.Workers
         {
             return document.DocumentNode.SelectSingleNode("//div[@class='text_block']");
         }
+
+        #endregion
     }
 }

@@ -7,6 +7,16 @@ namespace WebsiteWorkers.Workers
 {
     public class KommersantRu: Worker
     {
+        #region Constructor
+
+        public KommersantRu(Identifier identifier) : base(identifier)
+        {
+        }
+
+        #endregion
+
+        #region Methods
+
         public override async Task<String> GetLink(DbDataReader reader)
         {
             return await reader.GetFieldValueAsync<String>(0);
@@ -26,5 +36,7 @@ namespace WebsiteWorkers.Workers
         {
             return document.GetElementbyId("divLetterBranding");
         }
+
+        #endregion
     }
 }

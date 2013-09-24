@@ -41,11 +41,12 @@ namespace MonitoringService
             var articles = await _handler.HandleRssAsync();
             foreach (var article in articles)
             {
+                // todo: replace with log4net
                 var path =
                     String.Format(
                         @"C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\Success{0}.txt",
                         article.Newspaper);
-                File.AppendAllText(path, String.Format("{0} were collected", article.AddedArticles));
+                File.AppendAllText(path, String.Format("{0} were collected\n", article.AddedArticles));
             }
         }
     }

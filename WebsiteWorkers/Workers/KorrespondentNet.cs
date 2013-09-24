@@ -7,6 +7,17 @@ namespace WebsiteWorkers.Workers
 {
     public class KorrespondentNet: Worker
     {
+        #region Constructors
+
+        public KorrespondentNet(Identifier identifier)
+            : base(identifier)
+        {
+        }
+
+        #endregion
+
+        #region Methods
+
         public override async Task<String> GetLink(DbDataReader reader)
         {
             return await reader.GetFieldValueAsync<String>(1);
@@ -28,5 +39,7 @@ namespace WebsiteWorkers.Workers
             //this is unique too and will be helpfull if upper selector breaks;
             //return document.DocumentNode.SelectSingleNode("//div[@class='article_box']/span");
         }
+
+        #endregion
     }
 }
