@@ -66,9 +66,7 @@ namespace RssBusinessLogic
                     "from [dbo].[{1}] " +
                     "where {2})",
                     xmlRss.Replace('\'', '\"'), table, dbWorker.GetIdentifyingQuery());
-            Debugger.Break();
             var list = await _dataAccessLayer.FillRssAsync(sqlCommandString, dbWorker.GetLink);
-            Debugger.Break();
             return list.ToList();
         }
 
@@ -110,7 +108,7 @@ namespace RssBusinessLogic
             {
                 if (article == null)
                     continue;
-                stringBuilder.AppendFormat("(N'{0}', N'{1}'),", article.Link, article.Article);
+                stringBuilder.AppendFormat("(N'{0}', N'{1}'),", article.Link, article.Article.Replace('\'', '\"'));
             }
             stringBuilder.Length--;
             return stringBuilder.ToString();

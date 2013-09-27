@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.ServiceProcess;
 using System.Timers;
 using MonitoringService.Interfaces;
@@ -37,17 +36,8 @@ namespace MonitoringService
 
         private async void CollectArticles(Object sender, ElapsedEventArgs e)
         {
-            _timer.Interval = 3600000D;
-            var articles = await _handler.HandleRssAsync();
-            foreach (var article in articles)
-            {
-                // todo: replace with log4net
-                var path =
-                    String.Format(
-                        @"C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\Success{0}.txt",
-                        article.Newspaper);
-                File.AppendAllText(path, String.Format("{0} were collected\n", article.AddedArticles));
-            }
+            _timer.Interval = 7200000D;
+            await _handler.HandleRssAsync();
         }
     }
 }

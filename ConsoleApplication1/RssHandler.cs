@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
 using ConsoleApplication1.Interfaces;
+using NLog;
 using RssBusinessLogic;
 using RssBusinessLogic.Interfaces;
 using WebsiteWorkers;
@@ -16,6 +17,7 @@ namespace ConsoleApplication1
     {
         #region Fields
 
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         // Field for list of websites
         private readonly List<WebsiteInput> _websiteInputs = new List<WebsiteInput>
             {
@@ -42,18 +44,16 @@ namespace ConsoleApplication1
         #region Public
 
         // Main method
-        public async Task<List<ReportData>> HandleRssAsync()
+        public async Task HandleRssAsync()
         {
             var newRecords = await Task.WhenAll(_websiteInputs.Select(
                 async websiteInput => _businessLogic.ProcessData(websiteInput.Newspaper,
                     await GetRssDataByUriAsync(websiteInput.XmlLink), websiteInput.Worker)));
 
-            var records = new List<ReportData>();
-            foreach (var record in newRecords)
+            foreach (var rec in newRecords)
             {
-                records.Add(await record);
+                Logger.Info((await rec).ToString());
             }
-            return records;
         }
 
         #endregion

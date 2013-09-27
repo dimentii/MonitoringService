@@ -26,3 +26,15 @@ Cannot open database "RSS" requested by the login. The login failed.
 Login failed for user 'NT AUTHORITY\система'. Occured at: BusinessLogic
 Incorrect syntax near ')'. Occured at: BusinessLogic
 Incorrect syntax near ')'. Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic

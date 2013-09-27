@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
 using MonitoringService.Interfaces;
+using NLog;
 using RssBusinessLogic;
 using RssBusinessLogic.Interfaces;
 using WebsiteWorkers;
@@ -15,6 +15,8 @@ namespace MonitoringService
     class RssHandler : IRssHandler
     {
         #region Fields
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         // Field for list of websites
         private readonly List<WebsiteInput> _websiteInputs = new List<WebsiteInput>
@@ -42,18 +44,16 @@ namespace MonitoringService
         #region Public
 
         // Main method
-        public async Task<List<ReportData>> HandleRssAsync()
+        public async Task HandleRssAsync()
         {
             var newRecords = await Task.WhenAll(_websiteInputs.Select(
                 async websiteInput => _businessLogic.ProcessData(websiteInput.Newspaper,
                     await GetRssDataByUriAsync(websiteInput.XmlLink), websiteInput.Worker)));
 
-            var records = new List<ReportData>();
             foreach (var record in newRecords)
             {
-                records.Add(await record);
+                Logger.Info((await record).ToString());
             }
-            return records;
         }
 
         #endregion
@@ -66,7 +66,7 @@ namespace MonitoringService
             try
             {
                 var rssString = String.Empty;
-                using (var xmlReader = XmlReader.Create(feedUriString, 
+                using (var xmlReader = XmlReader.Create(feedUriString,
                     new XmlReaderSettings { Async = true, IgnoreProcessingInstructions = true }))
                 {
                     while (await xmlReader.ReadAsync())
@@ -78,10 +78,8 @@ namespace MonitoringService
             }
             catch (Exception exception)
             {
-                // todo: replace with log4net
-                var path =
-                    @"C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\RssHandler.txt";
-                File.AppendAllText(path, exception.Message + " Occured at: RssHandler. Incorrect link: " + feedUriString + "\n");
+                Logger.Error("Error while getting RSS data from website: {0}. Error message: {1}",
+                    feedUriString, exception.Message);
                 return null;
             }
         }

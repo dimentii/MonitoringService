@@ -11,5 +11,10 @@ namespace RssBusinessLogic
         }
         public Int32 AddedArticles { get; set; }
         public String Newspaper { get; set; }
+
+        public override String ToString()
+        {
+            return String.Format("Newspaper {0} produced {1} news", Newspaper, AddedArticles);
+        }
     }
 }

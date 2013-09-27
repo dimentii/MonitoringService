@@ -1,10 +1,10 @@
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\RssDataAccessLayer.dll
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\RssDataAccessLayer.pdb
-C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.dll
-C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.pdb
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\WebsiteWorkers.dll
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\WebsiteWorkers.pdb
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\HtmlAgilityPack.pdb
-C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.pdb

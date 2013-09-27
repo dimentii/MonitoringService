@@ -6,6 +6,6 @@ namespace ConsoleApplication1.Interfaces
 {
     public interface IRssHandler
     {
-        Task<List<ReportData>> HandleRssAsync();
+        Task HandleRssAsync();
     }
 }

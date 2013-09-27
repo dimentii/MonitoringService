@@ -4,3 +4,16 @@ Cannot open database "RSS" requested by the login. The login failed.
 Login failed for user 'NT AUTHORITY\система'. Occured at: BusinessLogic
 Incorrect syntax near ')'. Occured at: BusinessLogic
 Incorrect syntax near ')'. Occured at: BusinessLogic
+Incorrect syntax near 'Ди'.
+The label 'http' has already been declared. Label names must be unique within a query batch or stored procedure.
+The label 'net' has already been declared. Label names must be unique within a query batch or stored procedure.
+The label 'материалам' has already been declared. Label names must be unique within a query batch or stored procedure.
+The label 'http' has already been declared. Label names must be unique within a query batch or stored procedure.
+The identifier that starts with 'Рынок и так не развивается в финансовом выражении,
+поэтому такие шаги лидера рынка, как выведение тарифов, более свойственных
+' is too long. Maximum length is 128.
+Unclosed quotation mark after the character string ')'. Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic
+Длина не может быть меньше нуля.
+Имя параметра: value Occured at: BusinessLogic

@@ -1,0 +1,3 @@
+2013-09-25 23:33:01.6586|INFO|ConsoleApplication1.RssHandler|Newspaper Kommersant produced 0 news
+2013-09-25 23:33:01.6696|INFO|ConsoleApplication1.RssHandler|Newspaper Izvestia produced 1 news
+2013-09-25 23:33:01.6696|INFO|ConsoleApplication1.RssHandler|Newspaper Korrespondent produced 1 news
