@@ -1,23 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceProcess;
 using System.Timers;
-using MonitoringService.Interfaces;
+using RssBusinessLogic;
+using RssBusinessLogic.Interfaces;
+using WebsiteWorkers;
+using WebsiteWorkers.Workers;
 
 namespace MonitoringService
 {
     public partial class MonitoringService : ServiceBase
     {
         private Timer _timer;
-        private readonly IRssHandler _handler;
+        private readonly IBusinessLogic _businessLogic;
+        private readonly List<WebsiteInput> _websiteInputs = new List<WebsiteInput>
+            {
+                new WebsiteInput("Kommersant", "http://kommersant.ru/rss/daily.xml", new KommersantRu(Identifier.Guid)),
+                new WebsiteInput("Izvestia", "http://izvestia.ru/xml/rss/all.xml", new IzvestiaRu(Identifier.Link)),
+                new WebsiteInput("Korrespondent", "http://k.img.com.ua/rss/ru/news.xml", new KorrespondentNet(Identifier.Link))
+            };
 
         public MonitoringService()
         {
             InitializeComponent();
         }
 
-        public MonitoringService(IRssHandler rssHandler)
+        public MonitoringService(IBusinessLogic businessLogic)
         {
-            _handler = rssHandler;
+            _businessLogic = businessLogic;
             InitializeComponent();
         }
         
@@ -37,7 +47,7 @@ namespace MonitoringService
         private async void CollectArticles(Object sender, ElapsedEventArgs e)
         {
             _timer.Interval = 7200000D;
-            await _handler.HandleRssAsync();
+            await _businessLogic.BeginWork(_websiteInputs);
         }
     }
 }

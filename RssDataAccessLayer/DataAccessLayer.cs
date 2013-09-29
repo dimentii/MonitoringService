@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using RssDataAccessLayer.Interfaces;
@@ -17,9 +16,10 @@ namespace RssDataAccessLayer
 
         #region Methods
 
+        #region Public
+
         // Fill database and return only new articles' links
-        public async Task<List<String>> FillRssAsync(String sqlCommandString,
-                                                     Func<DbDataReader, Task<String>> getArticleLink)
+        public async Task<List<String>> FillRssAsync(String sqlCommandString, Int32 columnNumber)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
@@ -33,7 +33,7 @@ namespace RssDataAccessLayer
 
                         while (await sqlReader.ReadAsync())
                         {
-                            listOfLinks.Add(await getArticleLink(sqlReader));
+                            listOfLinks.Add(await GetArticleLink(sqlReader, columnNumber));
                         }
                         return listOfLinks;
                     }
@@ -42,7 +42,7 @@ namespace RssDataAccessLayer
         }
 
         // Fill database with complete article's data and return number of successfully added data;
-        public async Task<Int32> FillDataAsync(String sqlCommandString)
+        public async Task<Int32> FillCompleteDataAsync(String sqlCommandString)
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
@@ -56,6 +56,17 @@ namespace RssDataAccessLayer
                 return await command.ExecuteNonQueryAsync();
             }
         }
+
+        #endregion
+
+        #region Private
+
+        private async Task<String> GetArticleLink(SqlDataReader reader, Int32 columnNumber)
+        {
+            return await reader.GetFieldValueAsync<String>(columnNumber);
+        }
+
+        #endregion
 
         #endregion
     }

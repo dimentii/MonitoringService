@@ -1,0 +1,10 @@
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\bin\Debug\UnitTests.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\bin\Debug\UnitTests.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\bin\Debug\WebsiteWorkers.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\bin\Debug\WebsiteWorkers.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\UnitTests\obj\Debug\UnitTests.pdb

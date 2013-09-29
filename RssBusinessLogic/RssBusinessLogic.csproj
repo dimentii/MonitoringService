@@ -39,6 +39,9 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -53,10 +56,12 @@
     <Compile Include="ArticleData.cs" />
     <Compile Include="Interfaces\IDatabaseWorker.cs" />
     <Compile Include="Interfaces\IBusinessLogic.cs" />
+    <Compile Include="Interfaces\IRssLoader.cs" />
     <Compile Include="Interfaces\IWebsiteLoader.cs" />
     <Compile Include="Interfaces\IWebsiteParser.cs" />
     <Compile Include="NinjectModules\BusinessLogicInjectionModule.cs" />
     <Compile Include="ReportData.cs" />
+    <Compile Include="RssLoader.cs" />
     <Compile Include="WebsiteInput.cs" />
     <Compile Include="WebsiteLoader.cs" />
     <Compile Include="WebsiteParser.cs" />
@@ -75,6 +80,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

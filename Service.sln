@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteWorkers", "WebsiteWo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringService", "MonitoringService\MonitoringService.csproj", "{251CC59E-B36D-4A3D-A59F-A5E54294ADC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{BFE75A3F-5449-4E47-B4FD-536C665A9E48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{251CC59E-B36D-4A3D-A59F-A5E54294ADC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{251CC59E-B36D-4A3D-A59F-A5E54294ADC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{251CC59E-B36D-4A3D-A59F-A5E54294ADC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE75A3F-5449-4E47-B4FD-536C665A9E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE75A3F-5449-4E47-B4FD-536C665A9E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE75A3F-5449-4E47-B4FD-536C665A9E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE75A3F-5449-4E47-B4FD-536C665A9E48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

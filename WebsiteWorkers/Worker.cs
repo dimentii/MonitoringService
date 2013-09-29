@@ -1,9 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Data.Common;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using HtmlAgilityPack;
 
@@ -12,9 +10,9 @@ namespace WebsiteWorkers
     // Main class for website's parsers
     public abstract class Worker: IWebWorker, IDbWorker
     {
-        #region Fields
+        #region Properties
 
-        public Identifier Query;
+        public Identifier Identifier { get; set; }
 
         #endregion
 
@@ -22,7 +20,7 @@ namespace WebsiteWorkers
 
         protected Worker(Identifier identifier)
         {
-            Query = identifier;
+            Identifier = identifier;
         }
 
         #endregion
@@ -31,13 +29,11 @@ namespace WebsiteWorkers
 
         #region DbWorker Methods
 
-        public abstract Task<String> GetLink(DbDataReader reader);
-
         public String GetIdentifyingQuery()
         {
-            FieldInfo fi = Query.GetType().GetField(Query.ToString());
+            FieldInfo fi = Identifier.GetType().GetField(Identifier.ToString());
             var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Description : Query.ToString();
+            return attributes.Length > 0 ? attributes[0].Description : Identifier.ToString();
         }
 
         #endregion
@@ -46,6 +42,10 @@ namespace WebsiteWorkers
 
         public String GetText(HtmlDocument document)
         {
+            var result = new StringBuilder();
+
+            #region Article Main Node
+
             var articleNode = GetMainNode(document);
 
             if (articleNode == null)
@@ -53,13 +53,20 @@ namespace WebsiteWorkers
                 return GetDescriptionOnlyText(document);
             }
 
-            var result = new StringBuilder();
+            #endregion
+
+            #region Intro Part
 
             var introNode = GetIntroNode(articleNode);
+            
             if (introNode != null)
             {
                 result.Append(introNode.InnerText + " ").Replace('\'', '"');
             }
+
+            #endregion
+
+            #region Article Content Part
 
             var nodes = GetAtricleNodes(articleNode);
 
@@ -67,8 +74,10 @@ namespace WebsiteWorkers
             {
                 return "Only Description" + GetDescriptionOnlyText(document);
             }
-
+            
             result.Append(GrabText(nodes));
+
+            #endregion
 
             return result.ToString();
         }
@@ -85,9 +94,8 @@ namespace WebsiteWorkers
             {
                 result.Append(nodes[i].InnerText + " ");
             }
-            result.Replace('\'', '"');
-
-            return DecodeHtml(result.ToString());
+            
+            return CleanText(result.ToString());
         }
 
         protected abstract HtmlNode GetIntroNode(HtmlNode articleNode);
@@ -96,24 +104,24 @@ namespace WebsiteWorkers
 
         protected abstract HtmlNode GetMainNode(HtmlDocument document);
 
-        #endregion
-
-        #region Private Methods
-
-        private String DecodeHtml(String article)
-        {
-            return HttpUtility.HtmlDecode(article);
-        }
-
-        private HtmlNode GetAlternateNode(HtmlDocument document)
+        protected HtmlNode GetAlternateNode(HtmlDocument document)
         {
             return document.DocumentNode.SelectSingleNode("//meta[@name='description']");
         }
 
-        private String GetDescriptionOnlyText(HtmlDocument document)
+        protected String GetDescriptionOnlyText(HtmlDocument document)
         {
             var descriptionNode = GetAlternateNode(document);
             return descriptionNode.GetAttributeValue("content", "Not found");
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private static String CleanText(String article)
+        {
+            return HttpUtility.HtmlDecode(article).Replace('\'', '"');
         }
 
         #endregion

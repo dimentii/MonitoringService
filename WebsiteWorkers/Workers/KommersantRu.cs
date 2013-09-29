@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data.Common;
-using System.Threading.Tasks;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 
 namespace WebsiteWorkers.Workers
 {
@@ -16,11 +13,6 @@ namespace WebsiteWorkers.Workers
         #endregion
 
         #region Methods
-
-        public override async Task<String> GetLink(DbDataReader reader)
-        {
-            return await reader.GetFieldValueAsync<String>(0);
-        }
 
         protected override HtmlNode GetIntroNode(HtmlNode articleNode)
         {

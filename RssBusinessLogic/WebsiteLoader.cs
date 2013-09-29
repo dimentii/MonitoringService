@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using NLog;
 using RssBusinessLogic.Interfaces;
 
 namespace RssBusinessLogic
@@ -36,12 +36,10 @@ namespace RssBusinessLogic
             }
             catch (Exception exception)
             {
-                // todo: replace with log4net
-                var path =
-                    @"C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\WebsiteLoaderError.txt";
-                File.AppendAllText(path,
-                                   String.Format("Exception: {0}. Occured at WebsiteLoader. Link: {1}",
-                                                 exception.Message, link) + "\n");
+                Logger logger = LogManager.GetCurrentClassLogger();
+
+                logger.Error("Can't get response from {0}. Error message: {1}", link, exception.Message);
+
                 return null;
             }
         }

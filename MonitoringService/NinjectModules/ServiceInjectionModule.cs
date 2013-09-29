@@ -1,5 +1,4 @@
-﻿using MonitoringService.Interfaces;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using RssBusinessLogic;
 using RssBusinessLogic.Interfaces;
 
@@ -9,7 +8,6 @@ namespace MonitoringService.NinjectModules
     {
         public override void Load()
         {
-            Bind<IRssHandler>().To<RssHandler>();
             Bind<IBusinessLogic>().To<BusinessLogic>();
         }
     }

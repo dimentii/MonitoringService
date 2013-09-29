@@ -9,6 +9,7 @@ namespace RssBusinessLogic.NinjectModules
     {
         public override void Load()
         {
+            Bind<IRssLoader>().To<RssLoader>();
             Bind<IDatabaseWorker>().To<DatabaseWorker>();
             Bind<IWebsiteLoader>().To<WebsiteLoader>();
             Bind<IWebsiteParser>().To<WebsiteParser>();
