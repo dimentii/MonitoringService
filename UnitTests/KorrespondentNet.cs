@@ -8,13 +8,13 @@ using WebsiteWorkers;
 namespace UnitTests
 {
     [TestClass]
-    public class IzvestiaRu
+    public class KorrespondentNet
     {
         private List<FeedItem> _articles;
 
-        private readonly Worker _worker = new WebsiteWorkers.Workers.IzvestiaRu(Identifier.Link);
+        private readonly Worker _worker = new WebsiteWorkers.Workers.KorrespondentNet(Identifier.Link);
 
-        private const String RssLink = "http://izvestia.ru/xml/rss/all.xml";
+        private const String RssLink = "http://k.img.com.ua/rss/ru/news.xml";
 
         [TestInitialize]
         public void Initialize()
@@ -91,7 +91,7 @@ namespace UnitTests
                 if (!String.IsNullOrEmpty(descriptionNode))
                     nodes.Add(descriptionNode);
             }
-            Assert.AreEqual(_articles.Count, nodes.Count);
+            Assert.AreEqual(0, nodes.Count);
         }
 
         [TestMethod]

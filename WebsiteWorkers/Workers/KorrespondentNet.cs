@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using System;
+using HtmlAgilityPack;
 
 namespace WebsiteWorkers.Workers
 {
@@ -23,6 +24,16 @@ namespace WebsiteWorkers.Workers
         protected override HtmlNodeCollection GetAtricleNodes(HtmlNode articleNode)
         {
             return articleNode.SelectNodes("div|p/text()");
+        }
+
+        protected override String GetAuthor(HtmlDocument document)
+        {
+            return String.Empty;
+        }
+
+        protected override HtmlNode GetDescriptionNode(HtmlDocument document)
+        {
+            return GetTitleNode(document);
         }
 
         protected override HtmlNode GetMainNode(HtmlDocument document)

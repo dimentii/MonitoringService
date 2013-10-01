@@ -501,3 +501,57 @@
    logtoconsole = 
    logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
    assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe
+Выполняется удаление сборки 'C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
+   assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe
+Выполняется удаление источника EventLog MonitoringService.
+Выполняется удаление службы MonitoringService из системы...
+Служба MonitoringService успешно удалена из системы.
+Выполняется удаление сборки 'C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
+   assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe
+Выполняется удаление источника EventLog MonitoringService.
+Предупреждение. Источник MonitoringService не зарегистрирован на локальном компьютере.
+Выполняется удаление службы MonitoringService из системы...
+При выполнении программы установки System.ServiceProcess.ServiceInstaller во время установки возникло исключение.
+System.ComponentModel.Win32Exception: Указанная служба не установлена
+При удалении из системы возникло исключение. Это исключение будет проигнорировано, и удаление из системы будет продолжено. Однако после завершения удаления данное приложение может оказаться не полностью удаленным.
+Выполняется установка сборки 'C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
+   assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe
+Устанавливается служба MonitoringService...
+Служба MonitoringService успешно установлена.
+Создается исходный EventLog MonitoringService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
+   assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe
+Выполняется удаление сборки 'C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
+   assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe
+Выполняется удаление источника EventLog MonitoringService.
+Выполняется удаление службы MonitoringService из системы...
+Служба MonitoringService успешно удалена из системы.
+Попытка останова службы MonitoringService.
+Выполняется установка сборки 'C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
+   assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe
+Устанавливается служба MonitoringService...
+Служба MonitoringService успешно установлена.
+Создается исходный EventLog MonitoringService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.InstallLog
+   assemblypath = C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\MonitoringService\bin\Debug\MonitoringService.exe

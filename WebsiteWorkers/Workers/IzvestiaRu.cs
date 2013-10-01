@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using System;
+using HtmlAgilityPack;
 
 namespace WebsiteWorkers.Workers
 {
@@ -25,9 +26,22 @@ namespace WebsiteWorkers.Workers
             return articleNode.SelectNodes("p");
         }
 
+        protected override String GetAuthor(HtmlDocument document)
+        {
+            var authorNode = GetAuthorNode(document);
+            if (authorNode == null)
+                return String.Empty;
+            return authorNode.InnerText;
+        }
+
         protected override HtmlNode GetMainNode(HtmlDocument document)
         {
             return document.DocumentNode.SelectSingleNode("//div[@class='text_block']");
+        }
+
+        private HtmlNode GetAuthorNode(HtmlDocument document)
+        {
+            return document.DocumentNode.SelectSingleNode("//a[@itemprop='author']");
         }
 
         #endregion

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NLog;
 using RssBusinessLogic.Interfaces;
-using RssDataAccessLayer;
 using RssDataAccessLayer.Interfaces;
 using WebsiteWorkers;
 
@@ -100,12 +99,16 @@ namespace RssBusinessLogic
                         "(" +
                         "ID	int	not null identity(1,1), " +
                         "Link nvarchar(200), " +
-                        "Article nvarchar(max) " +
+                        "Author nvarchar(100), " +
+                        "Title nvarchar(500), " +
+                        "Description nvarchar(max), " +
+                        "Article nvarchar(max), " +
+                        "Date datetime not null default getdate(), " +
                         "constraint PK_{0} " +
                         "Primary Key(ID)" +
                         ") " +
                         "insert into [dbo].[{0}] " +
-                        "(Link, Article) " +
+                        "(Link, Author, Title, Description, Article) " +
                         "values {1}",
                         table, ConvertAtricleDataToString(data));
                 return await _dataAccessLayer.FillCompleteDataAsync(sqlCommandString);
@@ -132,7 +135,7 @@ namespace RssBusinessLogic
             {
                 if (article == null)
                     continue;
-                stringBuilder.AppendFormat("(N'{0}', N'{1}'),", article.Link, article.Article);
+                stringBuilder.AppendFormat(article.ToString());
             }
             stringBuilder.Length--;
             return stringBuilder.ToString();

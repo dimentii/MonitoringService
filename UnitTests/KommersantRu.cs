@@ -53,8 +53,8 @@ namespace UnitTests
             var nodes = new List<String>();
             foreach (var item in _articles)
             {
-                var descriptionNode = privateObject.Invoke("GetDescriptionOnlyText", item.Document) as String;
-                if (descriptionNode != null && descriptionNode != "Not found")
+                var descriptionNode = privateObject.Invoke("GetDescriptionText", item.Document) as String;
+                if (!String.IsNullOrEmpty(descriptionNode))
                     nodes.Add(descriptionNode);
             }
             Assert.AreEqual(_articles.Count, nodes.Count);
@@ -76,6 +76,34 @@ namespace UnitTests
                 {
                     nodes.Add(nodesCollection);
                 }
+            }
+            Assert.AreEqual(_articles.Count, nodes.Count);
+        }
+
+        [TestMethod]
+        public void GetAuthor()
+        {
+            var privateObject = new PrivateObject(_worker);
+            var nodes = new List<String>();
+            foreach (var item in _articles)
+            {
+                var descriptionNode = privateObject.Invoke("GetAuthor", item.Document) as String;
+                if (!String.IsNullOrEmpty(descriptionNode))
+                    nodes.Add(descriptionNode);
+            }
+            Assert.AreEqual(_articles.Count, nodes.Count);
+        }
+
+        [TestMethod]
+        public void GetTitle()
+        {
+            var privateObject = new PrivateObject(_worker);
+            var nodes = new List<String>();
+            foreach (var item in _articles)
+            {
+                var descriptionNode = privateObject.Invoke("GetTitle", item.Document) as String;
+                if (!String.IsNullOrEmpty(descriptionNode))
+                    nodes.Add(descriptionNode);
             }
             Assert.AreEqual(_articles.Count, nodes.Count);
         }

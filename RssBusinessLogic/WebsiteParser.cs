@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NLog;
 using RssBusinessLogic.Interfaces;
-using RssDataAccessLayer;
+using WebsiteWorkers;
 
 namespace RssBusinessLogic
 {
@@ -12,7 +12,7 @@ namespace RssBusinessLogic
         #region Methods
 
         public async Task<CompleteArticleData> ParseDocuments(ArticleData data,
-                                                              Func<HtmlDocument, String> getArticleText)
+                                                              Func<HtmlDocument, CompleteArticleData> getArticleData)
         {
             if (data == null)
             {
@@ -20,15 +20,18 @@ namespace RssBusinessLogic
             }
             try
             {
-                var articleString = await Task.Run(() =>
+                var articleData = await Task.Run(() =>
                     {
                         var htmlDocument = new HtmlDocument();
 
                         htmlDocument.LoadHtml(data.FullHtmlDocument);
 
-                        return getArticleText(htmlDocument);
+                        return getArticleData(htmlDocument);
                     });
-                return new CompleteArticleData {Article = articleString, Link = data.Link};
+
+                articleData.Link = data.Link;
+
+                return articleData;
             }
             catch (Exception exception)
             {

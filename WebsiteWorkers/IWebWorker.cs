@@ -1,10 +1,9 @@
-﻿using System;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 
 namespace WebsiteWorkers
 {
     public interface IWebWorker
     {
-        String GetText(HtmlDocument document);
+        CompleteArticleData GetData(HtmlDocument document);
     }
 }

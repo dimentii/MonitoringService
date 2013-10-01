@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NLog;
 using RssBusinessLogic.Interfaces;
-using RssDataAccessLayer;
 using WebsiteWorkers;
 
 namespace RssBusinessLogic
@@ -62,7 +61,7 @@ namespace RssBusinessLogic
             try
             {
                 var htmlDocuments = Task.WhenAll((await _databaseWorker.FillDbWithRssAsync(table, xml, worker))
-                                                     .Select(async rssDataArticle => await GetArticleAsync(rssDataArticle, worker.GetText)));
+                                                     .Select(async rssDataArticle => await GetArticleAsync(rssDataArticle, worker.GetData)));
                 return
                     new ReportData(await _databaseWorker.FillDbWithCompleteArticleAsync(table, await htmlDocuments), table);
             }
@@ -75,9 +74,9 @@ namespace RssBusinessLogic
         }
 
         // Parse web documents with HTML Agility Pack after getting html page with article with WebClient.
-        private async Task<CompleteArticleData> GetArticleAsync(String link, Func<HtmlDocument, String> getArticleText)
+        private async Task<CompleteArticleData> GetArticleAsync(String link, Func<HtmlDocument, CompleteArticleData> getArticleData)
         {
-            return await _websiteParser.ParseDocuments(await _websiteLoader.GetWebDocumentAsync(link), getArticleText);
+            return await _websiteParser.ParseDocuments(await _websiteLoader.GetWebDocumentAsync(link), getArticleData);
         }
 
         #endregion

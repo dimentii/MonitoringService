@@ -40,81 +40,134 @@ namespace WebsiteWorkers
 
         #region WebWorker Methods
 
-        public String GetText(HtmlDocument document)
+        public CompleteArticleData GetData(HtmlDocument document)
         {
-            var result = new StringBuilder();
+            #region Get Description
 
-            #region Article Main Node
+            var description = GetDescriptionText(document);
+
+            #endregion
+
+            #region Get Article Text
+
+            var articleText = new StringBuilder();
 
             var articleNode = GetMainNode(document);
 
-            if (articleNode == null)
+            if (articleNode != null)
             {
-                return GetDescriptionOnlyText(document);
+                #region Intro Part
+
+                var introNode = GetIntroNode(articleNode);
+
+                if (introNode != null)
+                {
+                    articleText.Append(introNode.InnerText + " ").Replace('\'', '"');
+                }
+
+                #endregion
+
+                #region Article Content Part
+
+                var nodes = GetAtricleNodes(articleNode);
+
+                articleText.Append(GrabArticleText(nodes));
+
+                #endregion
             }
 
             #endregion
 
-            #region Intro Part
+            #region Get Author
 
-            var introNode = GetIntroNode(articleNode);
-            
-            if (introNode != null)
-            {
-                result.Append(introNode.InnerText + " ").Replace('\'', '"');
-            }
+            var author = GetAuthor(document);
 
             #endregion
 
-            #region Article Content Part
+            #region Get Title
 
-            var nodes = GetAtricleNodes(articleNode);
-
-            if (nodes == null)
-            {
-                return "Only Description" + GetDescriptionOnlyText(document);
-            }
-            
-            result.Append(GrabText(nodes));
+            var title = GetTitle(document);
 
             #endregion
 
-            return result.ToString();
+            return new CompleteArticleData
+                {
+                    Author = author,
+                    Title = title,
+                    Description = description,
+                    Article = articleText.ToString()
+                };
         }
 
         #endregion
 
         #region Protected Methods
 
-        protected String GrabText(HtmlNodeCollection nodes)
+        #region Article part
+
+        protected abstract HtmlNode GetMainNode(HtmlDocument document);
+
+        protected abstract HtmlNode GetIntroNode(HtmlNode articleNode);
+
+        protected abstract HtmlNodeCollection GetAtricleNodes(HtmlNode articleNode);
+
+        protected String GrabArticleText(HtmlNodeCollection nodes)
         {
+            if (nodes == null)
+            {
+                return String.Empty;
+            }
+
             var result = new StringBuilder();
 
             for (var i = 0; i < nodes.Count; i++)
             {
                 result.Append(nodes[i].InnerText + " ");
             }
-            
+
             return CleanText(result.ToString());
         }
 
-        protected abstract HtmlNode GetIntroNode(HtmlNode articleNode);
+        #endregion
 
-        protected abstract HtmlNodeCollection GetAtricleNodes(HtmlNode articleNode);
+        protected abstract String GetAuthor(HtmlDocument document);
 
-        protected abstract HtmlNode GetMainNode(HtmlDocument document);
+        #region Description part
 
-        protected HtmlNode GetAlternateNode(HtmlDocument document)
+        protected virtual HtmlNode GetDescriptionNode(HtmlDocument document)
         {
-            return document.DocumentNode.SelectSingleNode("//meta[@name='description']");
+            return document.DocumentNode.SelectSingleNode("//meta[@property='og:description']");
         }
 
-        protected String GetDescriptionOnlyText(HtmlDocument document)
+        protected String GetDescriptionText(HtmlDocument document)
         {
-            var descriptionNode = GetAlternateNode(document);
-            return descriptionNode.GetAttributeValue("content", "Not found");
+            var descriptionNode = GetDescriptionNode(document);
+            if (descriptionNode == null)
+                return String.Empty;
+            var descriptionText = descriptionNode.GetAttributeValue("content", String.Empty);
+            return CleanText(descriptionText);
         }
 
+        #endregion
+
+        #region Title part
+
+        protected String GetTitle(HtmlDocument document)
+        {
+            var titleNode = GetTitleNode(document);
+            if (titleNode == null)
+                return String.Empty;
+            var titleText = titleNode.GetAttributeValue("content", String.Empty);
+            return CleanText(titleText);
+        }
+
+        protected HtmlNode GetTitleNode(HtmlDocument document)
+        {
+            return document.DocumentNode.SelectSingleNode("//meta[@property='og:title']");
+        }
+
+        #endregion
+        
         #endregion
 
         #region Private Methods

@@ -62,6 +62,7 @@
     <Compile Include="Init\RssLoader.cs" />
     <Compile Include="IzvestiaRu.cs" />
     <Compile Include="KommersantRu.cs" />
+    <Compile Include="KorrespondentNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

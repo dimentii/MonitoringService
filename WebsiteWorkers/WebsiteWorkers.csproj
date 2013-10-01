@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompleteArticleData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="IDbWorker.cs" />
     <Compile Include="IWebWorker.cs" />
