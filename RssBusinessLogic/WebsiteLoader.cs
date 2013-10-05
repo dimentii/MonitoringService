@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using NLog;
 using RssBusinessLogic.Interfaces;
@@ -26,13 +27,19 @@ namespace RssBusinessLogic
 
         #region Methods
 
-        public async Task<ArticleData> GetWebDocumentAsync(String link)
+        #region Public Methods
+
+        public async Task<ArticleData> GetWebDocumentAsync(String link, Encoding websiteEncoding)
         {
             try
             {
                 var response = await _httpClient.GetAsync(link, HttpCompletionOption.ResponseContentRead);
                 response.EnsureSuccessStatusCode();
-                return new ArticleData(await response.Content.ReadAsStringAsync(), link);
+                
+                var responseBytes = await response.Content.ReadAsByteArrayAsync();
+                var convertedBytes = Encoding.Convert(websiteEncoding, Encoding.UTF8, responseBytes);
+
+                return new ArticleData(Encoding.UTF8.GetString(convertedBytes), link);
             }
             catch (Exception exception)
             {
@@ -43,6 +50,13 @@ namespace RssBusinessLogic
                 return null;
             }
         }
+
+        #endregion
+
+        #region Private Methods
+
+
+        #endregion
 
         #endregion
     }

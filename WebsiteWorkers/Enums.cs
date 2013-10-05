@@ -2,7 +2,7 @@
 
 namespace WebsiteWorkers
 {
-    public enum Identifier
+    public enum Unique
     {
         [Description("[Guid_link] = Item.value('guid[1]', 'nvarchar(200)')")]
         Guid = 0,

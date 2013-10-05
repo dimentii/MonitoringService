@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
 using NLog;
 using RssBusinessLogic.Interfaces;
 using WebsiteWorkers;
@@ -40,7 +39,7 @@ namespace RssBusinessLogic
 
         public async Task BeginWork(List<WebsiteInput> inputs)
         {
-            var reports = await Task.WhenAll(inputs.Select( async websiteInput => ProcessData(websiteInput.Newspaper, 
+            var reports = await Task.WhenAll(inputs.Select(async websiteInput => ProcessData(websiteInput.Newspaper,
                 await _rssLoader.GetRssDataByUriAsync(websiteInput.XmlLink), websiteInput.Worker)));
 
             foreach (var report in reports)
@@ -56,12 +55,12 @@ namespace RssBusinessLogic
         /* First, fill Database with data which was got as xml string. Then fill Database with
          filtered and prepared articles Then get newspaper and number of added articles. */
         private async Task<ReportData> ProcessData<TWorker>(String table, String xml, TWorker worker)
-            where TWorker: IDbWorker, IWebWorker
+            where TWorker : IDbWorker, IWebWorker
         {
             try
             {
                 var htmlDocuments = Task.WhenAll((await _databaseWorker.FillDbWithRssAsync(table, xml, worker))
-                                                     .Select(async rssDataArticle => await GetArticleAsync(rssDataArticle, worker.GetData)));
+                                                     .Select(async rssDataArticle => await GetArticleAsync(rssDataArticle, worker)));
                 return
                     new ReportData(await _databaseWorker.FillDbWithCompleteArticleAsync(table, await htmlDocuments), table);
             }
@@ -74,9 +73,9 @@ namespace RssBusinessLogic
         }
 
         // Parse web documents with HTML Agility Pack after getting html page with article with WebClient.
-        private async Task<CompleteArticleData> GetArticleAsync(String link, Func<HtmlDocument, CompleteArticleData> getArticleData)
+        private async Task<CompleteArticleData> GetArticleAsync(String link, IWebWorker webWorker)
         {
-            return await _websiteParser.ParseDocuments(await _websiteLoader.GetWebDocumentAsync(link), getArticleData);
+            return await _websiteParser.ParseDocuments(await _websiteLoader.GetWebDocumentAsync(link, webWorker.WebsiteEncoding), webWorker);
         }
 
         #endregion

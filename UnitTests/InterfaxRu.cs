@@ -10,13 +10,13 @@ using WebsiteWorkers;
 namespace UnitTests
 {
     [TestClass]
-    public class KommersantRu
+    public class InterfaxRu
     {
         private static List<FeedItem> _articles;
 
-        private static readonly Worker Worker = new WebsiteWorkers.Workers.KommersantRu();
+        private static readonly Worker Worker = new WebsiteWorkers.Workers.InterfaxRu();
 
-        private const String RssLink = "http://kommersant.ru/rss/daily.xml";
+        private const String RssLink = "http://www.interfax.ru/rss.asp";
 
         [ClassInitialize]
         public static void Initialize(TestContext testContext)
@@ -93,7 +93,7 @@ namespace UnitTests
                 if (!String.IsNullOrEmpty(descriptionNode))
                     nodes.Add(descriptionNode);
             }
-            Assert.AreEqual(_articles.Count, nodes.Count);
+            Assert.AreEqual(0, nodes.Count);
         }
 
         [TestMethod]
@@ -149,10 +149,10 @@ namespace UnitTests
             var nodes = new List<String>();
             foreach (var article in completeArticles)
             {
-                if (!String.IsNullOrEmpty(article.Article))
+                if(!String.IsNullOrEmpty(article.Article))
                     nodes.Add(article.Article);
             }
-
+            
             Assert.AreEqual(_articles.Count, nodes.Count);
         }
 

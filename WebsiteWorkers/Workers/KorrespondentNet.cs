@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using HtmlAgilityPack;
 
 namespace WebsiteWorkers.Workers
@@ -7,9 +8,29 @@ namespace WebsiteWorkers.Workers
     {
         #region Constructors
 
-        public KorrespondentNet(Identifier identifier)
-            : base(identifier)
+        #endregion
+
+        #region Fields
+
+        private const Unique ArticleIdentifier = Unique.Link;
+
+        private readonly Encoding _websiteEncoding = Encoding.GetEncoding("windows-1251");
+
+        #endregion
+
+        #region Properties
+
+        public override Unique Identifier
         {
+            get { return ArticleIdentifier; }
+        }
+
+        public override Encoding WebsiteEncoding
+        {
+            get
+            {
+                return _websiteEncoding;
+            }
         }
 
         #endregion

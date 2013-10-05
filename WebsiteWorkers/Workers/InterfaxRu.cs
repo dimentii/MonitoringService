@@ -4,15 +4,15 @@ using HtmlAgilityPack;
 
 namespace WebsiteWorkers.Workers
 {
-    public class KommersantRu : Worker
+    public class InterfaxRu: Worker
     {
-        #region Constructor
+        #region Constructors
 
         #endregion
 
         #region Fields
 
-        private const Unique ArticleIdentifier = Unique.Guid;
+        private const Unique ArticleIdentifier = Unique.Link;
 
         private readonly Encoding _websiteEncoding = Encoding.GetEncoding("windows-1251");
 
@@ -39,30 +39,22 @@ namespace WebsiteWorkers.Workers
 
         protected override HtmlNode GetIntroNode(HtmlNode articleNode)
         {
-            return articleNode.SelectSingleNode("div[@class='document_vvodka']/text()");
+            return null;
         }
 
         protected override HtmlNodeCollection GetAtricleNodes(HtmlNode articleNode)
         {
-            return articleNode.SelectNodes("div[@class='document_text']/text()");
+            return articleNode.SelectNodes("p");
         }
 
         protected override String GetAuthor(HtmlDocument document)
         {
-            var authorNode = GetAuthorNode(document);
-            if (authorNode == null)
-                return String.Empty;
-            return authorNode.InnerText;
+            return String.Empty;
         }
-
+        
         protected override HtmlNode GetMainNode(HtmlDocument document)
         {
-            return document.GetElementbyId("divLetterBranding");
-        }
-
-        private HtmlNode GetAuthorNode(HtmlDocument document)
-        {
-            return document.DocumentNode.SelectSingleNode("//div[@class='document_authors vblock']");
+            return document.DocumentNode.SelectSingleNode("//div[@class='txtmain _ga1_on_ _reachbanner_']");
         }
 
         #endregion

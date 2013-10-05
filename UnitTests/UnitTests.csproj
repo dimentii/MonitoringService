@@ -60,6 +60,7 @@
     <Compile Include="Init\FeedData.cs" />
     <Compile Include="Init\FeedItem.cs" />
     <Compile Include="Init\RssLoader.cs" />
+    <Compile Include="InterfaxRu.cs" />
     <Compile Include="IzvestiaRu.cs" />
     <Compile Include="KommersantRu.cs" />
     <Compile Include="KorrespondentNet.cs" />

@@ -8,19 +8,18 @@ using HtmlAgilityPack;
 namespace WebsiteWorkers
 {
     // Main class for website's parsers
-    public abstract class Worker: IWebWorker, IDbWorker
+    public abstract class Worker : IWebWorker, IDbWorker
     {
         #region Properties
 
-        public Identifier Identifier { get; set; }
+        public abstract Unique Identifier { get; }
 
-        #endregion
-
-        #region Constructors
-
-        protected Worker(Identifier identifier)
+        public virtual Encoding WebsiteEncoding
         {
-            Identifier = identifier;
+            get
+            {
+                return Encoding.UTF8;
+            }
         }
 
         #endregion
@@ -167,7 +166,7 @@ namespace WebsiteWorkers
         }
 
         #endregion
-        
+
         #endregion
 
         #region Private Methods

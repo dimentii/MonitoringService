@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using HtmlAgilityPack;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTests.Init;
@@ -10,24 +12,24 @@ namespace UnitTests
     [TestClass]
     public class IzvestiaRu
     {
-        private List<FeedItem> _articles;
+        private static List<FeedItem> _articles;
 
-        private readonly Worker _worker = new WebsiteWorkers.Workers.IzvestiaRu(Identifier.Link);
+        private static readonly Worker Worker = new WebsiteWorkers.Workers.IzvestiaRu();
 
         private const String RssLink = "http://izvestia.ru/xml/rss/all.xml";
 
-        [TestInitialize]
-        public void Initialize()
+        [ClassInitialize]
+        public static void Initialize(TestContext testContext)
         {
             var loader = new RssLoader();
             _articles = loader.GetRssData(RssLink);
 
             var docLoader = new DocumentsLoader();
-            docLoader.LoadDocuments(_articles);
+            _articles = docLoader.LoadDocuments(_articles, Worker);
         }
 
-        [TestCleanup]
-        public void Cleanup()
+        [ClassCleanup]
+        public static void Cleanup()
         {
             _articles = null;
         }
@@ -35,7 +37,7 @@ namespace UnitTests
         [TestMethod]
         public void GetMainArticleNode()
         {
-            var privateObject = new PrivateObject(_worker);
+            var privateObject = new PrivateObject(Worker);
             var nodes = new List<HtmlNode>();
             foreach (var item in _articles)
             {
@@ -49,7 +51,7 @@ namespace UnitTests
         [TestMethod]
         public void GetDescription()
         {
-            var privateObject = new PrivateObject(_worker);
+            var privateObject = new PrivateObject(Worker);
             var nodes = new List<String>();
             foreach (var item in _articles)
             {
@@ -63,7 +65,7 @@ namespace UnitTests
         [TestMethod]
         public void GetArticleNodes()
         {
-            var privateObject = new PrivateObject(_worker);
+            var privateObject = new PrivateObject(Worker);
             var nodes = new List<HtmlNodeCollection>();
             foreach (var item in _articles)
             {
@@ -83,7 +85,7 @@ namespace UnitTests
         [TestMethod]
         public void GetAuthor()
         {
-            var privateObject = new PrivateObject(_worker);
+            var privateObject = new PrivateObject(Worker);
             var nodes = new List<String>();
             foreach (var item in _articles)
             {
@@ -97,7 +99,7 @@ namespace UnitTests
         [TestMethod]
         public void GetTitle()
         {
-            var privateObject = new PrivateObject(_worker);
+            var privateObject = new PrivateObject(Worker);
             var nodes = new List<String>();
             foreach (var item in _articles)
             {
@@ -106,6 +108,74 @@ namespace UnitTests
                     nodes.Add(descriptionNode);
             }
             Assert.AreEqual(_articles.Count, nodes.Count);
+        }
+
+        [TestMethod]
+        public void GetIdentifiers()
+        {
+            var uniques = new List<String>();
+            if (Worker.Identifier == Unique.Link)
+            {
+                foreach (var link in _articles)
+                {
+                    if (!uniques.Contains(link.Link))
+                    {
+                        uniques.Add(link.Link);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var link in _articles)
+                {
+                    if (!uniques.Contains(link.Guid))
+                    {
+                        uniques.Add(link.Guid);
+                    }
+                }
+            }
+            Assert.AreEqual(_articles.Count, uniques.Count);
+        }
+
+        [TestMethod]
+        public void GetArticleText()
+        {
+            var completeArticles = new List<CompleteArticleData>();
+            foreach (var article in _articles)
+            {
+                completeArticles.Add(Worker.GetData(article.Document));
+            }
+
+            var nodes = new List<String>();
+            foreach (var article in completeArticles)
+            {
+                if (!String.IsNullOrEmpty(article.Article))
+                    nodes.Add(article.Article);
+            }
+
+            Assert.AreEqual(_articles.Count, nodes.Count);
+        }
+
+        [TestMethod]
+        public void CheckEncoding()
+        {
+            var completeArticles = new List<CompleteArticleData>();
+            foreach (var article in _articles)
+            {
+                completeArticles.Add(Worker.GetData(article.Document));
+            }
+
+            var encoding = Encoding.UTF8;
+            var articleForCheck = completeArticles.FirstOrDefault();
+            if (articleForCheck != null)
+            {
+                var bytes = encoding.GetBytes(articleForCheck.Article);
+                var max = bytes.Max();
+                var min = bytes.Min();
+                Assert.IsTrue(max > min);
+            }
+            else
+                Assert.Fail("Did not get any article");
         }
     }
 }

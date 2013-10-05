@@ -7,9 +7,18 @@ namespace WebsiteWorkers.Workers
     {
         #region Constructor
 
-        public IzvestiaRu(Identifier identifier)
-            : base(identifier)
-        {
+        #endregion
+
+        #region Fields
+
+        private const Unique ArticleIdentifier = Unique.Link;
+
+        #endregion
+
+        #region Properties
+
+        public override Unique Identifier {
+            get { return ArticleIdentifier; }
         }
 
         #endregion

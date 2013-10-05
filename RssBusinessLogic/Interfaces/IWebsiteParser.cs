@@ -1,12 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using HtmlAgilityPack;
+﻿using System.Threading.Tasks;
 using WebsiteWorkers;
 
 namespace RssBusinessLogic.Interfaces
 {
     public interface IWebsiteParser
     {
-        Task<CompleteArticleData> ParseDocuments(ArticleData data, Func<HtmlDocument, CompleteArticleData> getArticleText);
+        Task<CompleteArticleData> ParseDocuments(ArticleData data, IWebWorker webWorker);
     }
 }

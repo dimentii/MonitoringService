@@ -11,8 +11,7 @@ namespace RssBusinessLogic
     {
         #region Methods
 
-        public async Task<CompleteArticleData> ParseDocuments(ArticleData data,
-                                                              Func<HtmlDocument, CompleteArticleData> getArticleData)
+        public async Task<CompleteArticleData> ParseDocuments(ArticleData data, IWebWorker webWorker)
         {
             if (data == null)
             {
@@ -26,7 +25,7 @@ namespace RssBusinessLogic
 
                         htmlDocument.LoadHtml(data.FullHtmlDocument);
 
-                        return getArticleData(htmlDocument);
+                        return webWorker.GetData(htmlDocument);
                     });
 
                 articleData.Link = data.Link;

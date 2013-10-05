@@ -4,7 +4,7 @@ namespace WebsiteWorkers
 {
     public interface IDbWorker
     {
-        Identifier Identifier { get; set; }
+        Unique Identifier { get; }
         String GetIdentifyingQuery();
     }
 }
