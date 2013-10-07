@@ -123,6 +123,21 @@ namespace RssBusinessLogic
             }
         }
 
+        public async Task RemoveUnhandledLinks(String table, String link)
+        {
+            try
+            {
+                var sqlCommandString = String.Format("use rss delete from [dbo].[{0}] where [Link] = {1}", table, link);
+                await _dataAccessLayer.RemoveUnhandledArticlesAsync(sqlCommandString);
+            }
+            catch (Exception exception)
+            {
+                Logger logger = LogManager.GetCurrentClassLogger();
+
+                logger.Error("Error while removing from rss database from table {0}. Error message: {1}", table, exception.Message);
+            }
+        }
+
         #endregion
 
         #region Private

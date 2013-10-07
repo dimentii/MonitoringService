@@ -33,7 +33,7 @@ namespace MonitoringService
         
         protected override void OnStart(String[] args)
         {
-            _timer = new Timer(30000D) {AutoReset = true};
+            _timer = new Timer(60000D) {AutoReset = true};
             _timer.Elapsed += CollectArticles;
             _timer.Start();
         }

@@ -8,5 +8,6 @@ namespace RssDataAccessLayer.Interfaces
     {
         Task<List<String>> FillRssAsync(String sqlCommandString, Int32 columnNumber);
         Task<Int32> FillCompleteDataAsync(String sqlCommandString);
+        Task RemoveUnhandledArticlesAsync(String sqlCommandString);
     }
 }

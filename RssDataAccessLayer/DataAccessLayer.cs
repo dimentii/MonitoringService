@@ -57,6 +57,21 @@ namespace RssDataAccessLayer
             }
         }
 
+        public async Task RemoveUnhandledArticlesAsync(String sqlCommandString)
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                await connection.OpenAsync();
+                var command = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandText = sqlCommandString
+                    };
+
+                await command.ExecuteNonQueryAsync();
+            }
+        }
+
         #endregion
 
         #region Private

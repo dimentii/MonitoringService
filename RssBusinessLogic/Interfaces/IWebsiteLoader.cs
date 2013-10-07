@@ -6,6 +6,6 @@ namespace RssBusinessLogic.Interfaces
 {
     public interface IWebsiteLoader
     {
-        Task<ArticleData> GetWebDocumentAsync(String link, Encoding websiteEncoding);
+        Task<ArticleData> GetWebDocumentAsync(String table, String link, Encoding websiteEncoding, Func<String, String, Task> removeUnhandledLinks);
     }
 }

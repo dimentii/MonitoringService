@@ -60,7 +60,7 @@ namespace RssBusinessLogic
             try
             {
                 var htmlDocuments = Task.WhenAll((await _databaseWorker.FillDbWithRssAsync(table, xml, worker))
-                                                     .Select(async rssDataArticle => await GetArticleAsync(rssDataArticle, worker)));
+                                                     .Select(async rssDataArticle => await GetArticleAsync(table, rssDataArticle, worker)));
                 return
                     new ReportData(await _databaseWorker.FillDbWithCompleteArticleAsync(table, await htmlDocuments), table);
             }
@@ -73,9 +73,10 @@ namespace RssBusinessLogic
         }
 
         // Parse web documents with HTML Agility Pack after getting html page with article with WebClient.
-        private async Task<CompleteArticleData> GetArticleAsync(String link, IWebWorker webWorker)
+        private async Task<CompleteArticleData> GetArticleAsync(String table, String link, IWebWorker webWorker)
         {
-            return await _websiteParser.ParseDocuments(await _websiteLoader.GetWebDocumentAsync(link, webWorker.WebsiteEncoding), webWorker);
+            return await _websiteParser.ParseDocuments(
+                await _websiteLoader.GetWebDocumentAsync(table, link, webWorker.WebsiteEncoding, _databaseWorker.RemoveUnhandledLinks), webWorker);
         }
 
         #endregion

@@ -10,43 +10,26 @@ namespace RssBusinessLogic
     // Loads html pages by article's links
     class WebsiteLoader : IWebsiteLoader
     {
-        #region Fields
-
-        private readonly HttpClient _httpClient;
-
-        #endregion
-
-        #region Constructors
-
-        public WebsiteLoader(HttpClient httpClient)
-        {
-            _httpClient = httpClient;
-        }
-
-        #endregion
-
         #region Methods
 
         #region Public Methods
 
-        public async Task<ArticleData> GetWebDocumentAsync(String link, Encoding websiteEncoding)
+        public async Task<ArticleData> GetWebDocumentAsync(String table, String link, Encoding websiteEncoding, Func<String, String, Task> removeUnhandledLinks)
         {
-            try
+            using (var httpClient = new HttpClient())
             {
-                var response = await _httpClient.GetAsync(link, HttpCompletionOption.ResponseContentRead);
-                response.EnsureSuccessStatusCode();
+                var response = await httpClient.GetAsync(link, HttpCompletionOption.ResponseContentRead);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseBytes = await response.Content.ReadAsByteArrayAsync();
+                    var convertedBytes = Encoding.Convert(websiteEncoding, Encoding.UTF8, responseBytes);
+
+                    return new ArticleData(Encoding.UTF8.GetString(convertedBytes), link);
+                }
                 
-                var responseBytes = await response.Content.ReadAsByteArrayAsync();
-                var convertedBytes = Encoding.Convert(websiteEncoding, Encoding.UTF8, responseBytes);
-
-                return new ArticleData(Encoding.UTF8.GetString(convertedBytes), link);
-            }
-            catch (Exception exception)
-            {
-                Logger logger = LogManager.GetCurrentClassLogger();
-
-                logger.Error("Can't get response from {0}. Error message: {1}", link, exception.Message);
-
+                await HandleFailLoad(table, link, removeUnhandledLinks);
+                
                 return null;
             }
         }
@@ -55,6 +38,14 @@ namespace RssBusinessLogic
 
         #region Private Methods
 
+        private static async Task HandleFailLoad(String table, String link, Func<String, String, Task> removeUnhandledLinks)
+        {
+            Logger logger = LogManager.GetCurrentClassLogger();
+
+            logger.Error("Can't get response from {0}.", link);
+
+            await removeUnhandledLinks(table, link);
+        }
 
         #endregion
 
