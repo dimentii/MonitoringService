@@ -26,3 +26,73 @@
 2013-09-29 22:57:57.5427|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 0 news
 2013-09-29 22:57:57.5427|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
 2013-09-29 22:57:57.5427|INFO|RssBusinessLogic.BusinessLogic|Newspaper Korrespondent produced 0 news
+2013-10-08 23:32:25.6080|ERROR|RssBusinessLogic.DatabaseWorker+<FillDbWithRssAsync>d__0|Error while writing to rss database for Kommersant. Error message: Неопределенные данные. Этот метод или свойство не может вызываться для значений равных Null.
+2013-10-08 23:32:25.7796|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Kommersant at business logic. Error message: Значение не может быть неопределенным.
+Имя параметра: source
+2013-10-08 23:32:25.7796|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 0 news
+2013-10-09 00:03:19.6604|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 165 news
+2013-10-09 00:38:47.0053|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Kommersant at business logic. Error message: Отменена задача.
+2013-10-09 00:38:47.0209|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 0 news
+2013-10-09 20:00:19.0572|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 229 news
+2013-10-09 20:07:17.6725|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 226 news
+2013-10-09 20:09:25.6135|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558562.
+2013-10-09 20:09:25.6135|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558520.
+2013-10-09 20:09:25.6135|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558512.
+2013-10-09 20:09:30.2311|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558551.
+2013-10-09 20:09:30.2311|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558515.
+2013-10-09 20:09:31.6975|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558484.
+2013-10-09 20:09:33.4447|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558476.
+2013-10-09 20:09:33.4603|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558532.
+2013-10-09 20:09:33.4603|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558528.
+2013-10-09 20:09:33.4759|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558514.
+2013-10-09 20:09:35.0047|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558523.
+2013-10-09 20:09:36.4087|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558526.
+2013-10-09 20:09:36.4087|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558527.
+2013-10-09 20:09:37.7035|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558504.
+2013-10-09 20:09:37.7035|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558548.
+2013-10-09 20:09:39.2011|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558486.
+2013-10-09 20:10:01.5560|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558499.
+2013-10-09 20:10:01.5716|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558542.
+2013-10-09 20:10:01.5716|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558510.
+2013-10-09 20:10:03.2720|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558549.
+2013-10-09 20:10:03.5996|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558487.
+2013-10-09 20:10:07.6088|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 9 news
+2013-10-09 20:14:26.2057|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558510.
+2013-10-09 20:14:26.2213|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558514.
+2013-10-09 20:14:26.2057|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558528.
+2013-10-09 20:14:28.3897|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558548.
+2013-10-09 20:14:28.3897|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558486.
+2013-10-09 20:14:28.3897|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558487.
+2013-10-09 20:14:28.4053|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558532.
+2013-10-09 20:14:29.7001|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558526.
+2013-10-09 20:14:29.7001|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558523.
+2013-10-09 20:14:30.8545|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558527.
+2013-10-09 20:14:31.6501|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558499.
+2013-10-09 20:14:31.6657|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558515.
+2013-10-09 20:14:31.6657|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558484.
+2013-10-09 20:14:31.6657|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558512.
+2013-10-09 20:14:33.5533|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558520.
+2013-10-09 20:14:34.4113|ERROR|RssBusinessLogic.WebsiteLoader+<HandleFailLoad>d__a|Can't get response from http://izvestia.ru/news/558504.
+2013-10-09 20:14:40.9789|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 5 news
+2013-10-09 21:46:43.5732|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Izvestia at business logic. Error message: Отменена задача.
+2013-10-09 21:46:43.5732|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
+2013-10-09 22:35:38.8818|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Izvestia at business logic. Error message: Отменена задача.
+2013-10-09 22:35:38.8974|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
+2013-10-09 23:05:26.7913|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 30 news
+2013-10-09 23:11:01.4821|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 30 news
+2013-10-09 23:39:46.0087|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
+2013-10-09 23:39:53.4771|INFO|RssBusinessLogic.BusinessLogic|Newspaper Korrespondent produced 20 news
+2013-10-09 23:41:26.0534|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
+2013-10-09 23:41:26.0534|INFO|RssBusinessLogic.BusinessLogic|Newspaper Korrespondent produced 0 news
+2013-10-09 23:41:31.9317|INFO|RssBusinessLogic.BusinessLogic|Newspaper Interfax produced 30 news
+2013-10-09 23:45:42.1731|ERROR|RssBusinessLogic.RssLoader+<GetRssDataByUriAsync>d__1|Error while getting RSS data from website: http://k.img.com.ua/rss/ru/news.xml. Error message: Открывающий тег "image" в позиции 7 строки 150 не соответствует закрывающему тегу "fulltext"., строка 150, позиция 496.
+2013-10-09 23:45:42.2521|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Korrespondent at business logic. Error message: Значение не может быть неопределенным.
+Имя параметра: source
+2013-10-09 23:47:11.0941|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 162 news
+2013-10-09 23:47:11.0941|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
+2013-10-09 23:47:11.0941|INFO|RssBusinessLogic.BusinessLogic|Newspaper Korrespondent produced 0 news
+2013-10-09 23:47:11.0941|INFO|RssBusinessLogic.BusinessLogic|Newspaper Interfax produced 0 news
+2013-10-09 23:49:09.7699|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 71 news
+2013-10-09 23:49:09.7699|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
+2013-10-09 23:49:09.7699|INFO|RssBusinessLogic.BusinessLogic|Newspaper Korrespondent produced 1 news
+2013-10-09 23:49:09.7699|INFO|RssBusinessLogic.BusinessLogic|Newspaper Interfax produced 0 news

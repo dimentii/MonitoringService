@@ -41,7 +41,7 @@ namespace RssBusinessLogic
             {
                 var sqlCommandString =
                     String.Format(
-                        "use rss " +
+                        "use RssTest " +
                         "if object_id('[dbo].[{1}]') is null " +
                         "create table {1} " +
                         "(" +
@@ -49,26 +49,26 @@ namespace RssBusinessLogic
                         "Title nvarchar(max), " +
                         "Descript nvarchar(max), " +
                         "PublishDate nvarchar(100), " +
-                        "Guid_link nvarchar(200), " +
                         "Link nvarchar(200), " +
                         "constraint PK_{1} " +
                         "Primary Key(ID)" +
                         ") " +
-                        "declare @Xml xml set @Xml = '{0}'" +
-                        " insert into [dbo].[{1}] (Title, Descript, PublishDate, Guid_link, Link) " +
-                        "output inserted.Guid_link, inserted.Link, inserted.Descript " +
+                        "declare @Xml xml set @Xml = '{0}' " +
+                        "insert into [dbo].[{1}] (Title, Descript, PublishDate, Link) " +
+                        "output inserted.Link " +
                         "select Item.value('title[1]', 'nvarchar(max)'), " +
                         "Item.value('description[1]', 'nvarchar(max)'), " +
                         "Item.value('pubDate[1]', 'nvarchar(100)'), " +
-                        "Item.value('guid[1]', 'nvarchar(200)'), " +
-                        "Item.value('link[1]', 'nvarchar(200)') " +
+                        "Item.value('{2}[1]', 'nvarchar(200)') " +
                         "from @Xml.nodes('channel/item') as Result(Item) " +
                         "where not exists " +
                         "(select * " +
                         "from [dbo].[{1}] " +
-                        "where {2})",
-                        xmlRss.Replace('\'', '\"'), table, dbWorker.GetIdentifyingQuery());
-                var list = await _dataAccessLayer.FillRssAsync(sqlCommandString, (Int32)dbWorker.Identifier);
+                        "where [Link] = Item.value('{2}[1]', 'nvarchar(200)'))",
+                        xmlRss.Replace('\'', '\"'), table, dbWorker.LinkContainer.ToString("g").ToLower());
+                
+                var list = await _dataAccessLayer.FillRssAsync(sqlCommandString);
+                
                 return list.ToList();
             }
             catch (Exception exception)
@@ -93,7 +93,7 @@ namespace RssBusinessLogic
             {
                 var sqlCommandString =
                     String.Format(
-                        "use final " +
+                        "use FinalTest " +
                         "if object_id('[dbo].[{0}]') is null " +
                         "create table {0} " +
                         "(" +
@@ -127,7 +127,7 @@ namespace RssBusinessLogic
         {
             try
             {
-                var sqlCommandString = String.Format("use rss delete from [dbo].[{0}] where [Link] = {1}", table, link);
+                var sqlCommandString = String.Format("use RssTest delete from [dbo].[{0}] where [Link] = '{1}'", table, link);
                 await _dataAccessLayer.RemoveUnhandledArticlesAsync(sqlCommandString);
             }
             catch (Exception exception)

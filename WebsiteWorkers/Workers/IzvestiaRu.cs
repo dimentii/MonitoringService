@@ -9,16 +9,14 @@ namespace WebsiteWorkers.Workers
 
         #endregion
 
-        #region Fields
-
-        private const Unique ArticleIdentifier = Unique.Link;
-
-        #endregion
-
         #region Properties
 
-        public override Unique Identifier {
-            get { return ArticleIdentifier; }
+        protected override RssLinkContainer Container
+        {
+            get
+            {
+                return RssLinkContainer.Link;
+            }
         }
 
         #endregion

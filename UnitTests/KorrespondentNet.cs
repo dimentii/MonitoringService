@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using HtmlAgilityPack;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -24,7 +25,7 @@ namespace UnitTests
             var loader = new RssLoader();
             _articles = loader.GetRssData(RssLink);
 
-            var docLoader = new DocumentsLoader();
+            var docLoader = new DocumentsLoader(new HttpClient());
             _articles = docLoader.LoadDocuments(_articles, Worker);
         }
 
@@ -114,7 +115,7 @@ namespace UnitTests
         public void GetIdentifiers()
         {
             var uniques = new List<String>();
-            if (Worker.Identifier == Unique.Link)
+            if (Worker.LinkContainer == RssLinkContainer.Link)
             {
                 foreach (var link in _articles)
                 {

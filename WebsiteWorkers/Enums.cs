@@ -1,12 +1,8 @@
-﻿using System.ComponentModel;
-
-namespace WebsiteWorkers
+﻿namespace WebsiteWorkers
 {
-    public enum Unique
+    public enum RssLinkContainer
     {
-        [Description("[Guid_link] = Item.value('guid[1]', 'nvarchar(200)')")]
         Guid = 0,
-        [Description("[Link] = Item.value('link[1]', 'nvarchar(200)')")]
         Link = 1
     }
 }

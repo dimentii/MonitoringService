@@ -1,10 +1,7 @@
-﻿using System;
-
-namespace WebsiteWorkers
+﻿namespace WebsiteWorkers
 {
     public interface IDbWorker
     {
-        Unique Identifier { get; }
-        String GetIdentifyingQuery();
+        RssLinkContainer LinkContainer { get; }
     }
 }

@@ -4,7 +4,7 @@ using HtmlAgilityPack;
 
 namespace WebsiteWorkers.Workers
 {
-    public class InterfaxRu: Worker
+    public class InterfaxRu : Worker
     {
         #region Constructors
 
@@ -12,17 +12,18 @@ namespace WebsiteWorkers.Workers
 
         #region Fields
 
-        private const Unique ArticleIdentifier = Unique.Link;
-
         private readonly Encoding _websiteEncoding = Encoding.GetEncoding("windows-1251");
 
         #endregion
 
         #region Properties
 
-        public override Unique Identifier
+        protected override RssLinkContainer Container
         {
-            get { return ArticleIdentifier; }
+            get
+            {
+                return RssLinkContainer.Link;
+            }
         }
 
         public override Encoding WebsiteEncoding
@@ -51,7 +52,7 @@ namespace WebsiteWorkers.Workers
         {
             return String.Empty;
         }
-        
+
         protected override HtmlNode GetMainNode(HtmlDocument document)
         {
             return document.DocumentNode.SelectSingleNode("//div[@class='txtmain _ga1_on_ _reachbanner_']");

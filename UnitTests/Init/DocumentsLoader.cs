@@ -10,8 +10,16 @@ namespace UnitTests.Init
 {
     class DocumentsLoader
     {
+        private readonly HttpClient _httpClient;
+
+        public DocumentsLoader(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
         public List<FeedItem> LoadDocuments(List<FeedItem> articles, IWebWorker webWorker)
         {
+            var count = 0;
             var failedArticles = new List<FeedItem>();
             foreach (var article in articles)
             {
@@ -24,6 +32,8 @@ namespace UnitTests.Init
                 }
                 htmlDocument.LoadHtml(htmlString);
                 article.Document = htmlDocument;
+                if (count++ > 5)
+                    break;
             }
 
             return articles.Where(art => art.Document != null).ToList();
@@ -34,18 +44,16 @@ namespace UnitTests.Init
             try
             {
                 var responseString = String.Empty;
-                using (var client = new HttpClient())
+                var response = _httpClient.GetAsync(link);
+                if (response.Result.IsSuccessStatusCode)
                 {
-                    var response = client.GetAsync(link);
-                    if (response.Result.IsSuccessStatusCode)
-                    {
-                        var responseContent = response.Result.Content;
-                        var responseBytes = responseContent.ReadAsByteArrayAsync().Result;
-                        var convertedResponseBytes = Encoding.Convert(encode, Encoding.UTF8, responseBytes);
-                        responseString =
-                            Encoding.UTF8.GetString(convertedResponseBytes);
-                    }
+                    var responseContent = response.Result.Content;
+                    var responseBytes = responseContent.ReadAsByteArrayAsync().Result;
+                    var convertedResponseBytes = Encoding.Convert(encode, Encoding.UTF8, responseBytes);
+                    responseString =
+                        Encoding.UTF8.GetString(convertedResponseBytes);
                 }
+
                 return responseString;
             }
             catch (Exception)

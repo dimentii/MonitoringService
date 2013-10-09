@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Reflection;
 using System.Text;
 using System.Web;
 using HtmlAgilityPack;
@@ -10,9 +8,15 @@ namespace WebsiteWorkers
     // Main class for website's parsers
     public abstract class Worker : IWebWorker, IDbWorker
     {
+        #region Constructors
+
+        #endregion
+
         #region Properties
 
-        public abstract Unique Identifier { get; }
+        protected abstract RssLinkContainer Container { get; }
+
+        public RssLinkContainer LinkContainer { get { return Container; } }
 
         public virtual Encoding WebsiteEncoding
         {
@@ -25,17 +29,6 @@ namespace WebsiteWorkers
         #endregion
 
         #region Methods
-
-        #region DbWorker Methods
-
-        public String GetIdentifyingQuery()
-        {
-            FieldInfo fi = Identifier.GetType().GetField(Identifier.ToString());
-            var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Description : Identifier.ToString();
-        }
-
-        #endregion
 
         #region WebWorker Methods
 

@@ -19,7 +19,7 @@ namespace RssDataAccessLayer
         #region Public
 
         // Fill database and return only new articles' links
-        public async Task<List<String>> FillRssAsync(String sqlCommandString, Int32 columnNumber)
+        public async Task<List<String>> FillRssAsync(String sqlCommandString)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
@@ -33,8 +33,9 @@ namespace RssDataAccessLayer
 
                         while (await sqlReader.ReadAsync())
                         {
-                            listOfLinks.Add(await GetArticleLink(sqlReader, columnNumber));
+                            listOfLinks.Add(await GetArticleLink(sqlReader));
                         }
+
                         return listOfLinks;
                     }
                 }
@@ -76,9 +77,9 @@ namespace RssDataAccessLayer
 
         #region Private
 
-        private async Task<String> GetArticleLink(SqlDataReader reader, Int32 columnNumber)
+        private async Task<String> GetArticleLink(SqlDataReader reader)
         {
-            return await reader.GetFieldValueAsync<String>(columnNumber);
+            return await reader.GetFieldValueAsync<String>(0);
         }
 
         #endregion

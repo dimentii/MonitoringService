@@ -12,17 +12,18 @@ namespace WebsiteWorkers.Workers
 
         #region Fields
 
-        private const Unique ArticleIdentifier = Unique.Link;
-
         private readonly Encoding _websiteEncoding = Encoding.GetEncoding("windows-1251");
 
         #endregion
 
         #region Properties
 
-        public override Unique Identifier
+        protected override RssLinkContainer Container
         {
-            get { return ArticleIdentifier; }
+            get
+            {
+                return RssLinkContainer.Link;
+            }
         }
 
         public override Encoding WebsiteEncoding
