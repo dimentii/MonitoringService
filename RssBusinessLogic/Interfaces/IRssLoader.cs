@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using RssBusinessLogic.RSS;
 
 namespace RssBusinessLogic.Interfaces
 {
     public interface IRssLoader
     {
-        Task<String> GetRssDataByUriAsync(String feedUriString);
+        Task<Channel> GetRssDataByUriAsync(String feedUriString);
     }
 }

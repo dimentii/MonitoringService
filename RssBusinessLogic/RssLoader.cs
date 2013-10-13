@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 using NLog;
 using RssBusinessLogic.Interfaces;
+using RssBusinessLogic.RSS;
 
 namespace RssBusinessLogic
 {
@@ -13,20 +15,21 @@ namespace RssBusinessLogic
         #region Public
 
         // Get Data from websites in rss format
-        public async Task<String> GetRssDataByUriAsync(String feedUriString)
+        public async Task<Channel> GetRssDataByUriAsync(String feedUriString)
         {
             try
             {
-                var rssString = String.Empty;
+                Channel rssChannel = null;
                 using (var xmlReader = XmlReader.Create(feedUriString,
                     new XmlReaderSettings { Async = true, IgnoreProcessingInstructions = true }))
                 {
                     while (await xmlReader.ReadAsync())
                     {
-                        rssString = xmlReader.ReadInnerXml();
+                        var xmlSerializer = new XmlSerializer(typeof (Channel));
+                        rssChannel = (Channel) xmlSerializer.Deserialize(xmlReader);
                     }
                 }
-                return rssString;
+                return rssChannel;
             }
             catch (Exception exception)
             {

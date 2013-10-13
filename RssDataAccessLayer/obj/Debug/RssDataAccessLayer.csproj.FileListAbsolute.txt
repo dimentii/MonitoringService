@@ -2,4 +2,3 @@ C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLaye
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\bin\Debug\RssDataAccessLayer.pdb
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.dll
 C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.pdb
-C:\Users\Dydewki\Documents\Visual Studio 2012\Projects\Service\RssDataAccessLayer\obj\Debug\RssDataAccessLayer.csprojResolveAssemblyReference.cache

@@ -17,7 +17,9 @@ namespace MonitoringService
                 new WebsiteInput("Kommersant", "http://kommersant.ru/rss/daily.xml", new KommersantRu()),
                 new WebsiteInput("Izvestia", "http://izvestia.ru/xml/rss/all.xml", new IzvestiaRu()),
                 new WebsiteInput("Korrespondent", "http://k.img.com.ua/rss/ru/news.xml", new KorrespondentNet()),
-                new WebsiteInput("Interfax", "http://www.interfax.ru/rss.asp", new InterfaxRu())
+                new WebsiteInput("Interfax", "http://www.interfax.ru/rss.asp", new InterfaxRu()),
+                new WebsiteInput("Regnum", "http://www.regnum.ru/rss/index.xml", new RegnumRu()),
+                new WebsiteInput("AnnewsRu", "http://annews.ru/rss.php", new AnnewsRu())
             };
 
         public MonitoringService()

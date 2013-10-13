@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NLog;
 using RssBusinessLogic.Interfaces;
+using RssBusinessLogic.RSS;
 using WebsiteWorkers;
 
 namespace RssBusinessLogic
@@ -52,14 +53,14 @@ namespace RssBusinessLogic
 
         #region Private
 
-        /* First, fill Database with data which was got as xml string. Then fill Database with
+        /* First, fill Database with data which was got as channel string. Then fill Database with
          filtered and prepared articles Then get newspaper and number of added articles. */
-        private async Task<ReportData> ProcessData<TWorker>(String table, String xml, TWorker worker)
+        private async Task<ReportData> ProcessData<TWorker>(String table, Channel channel, TWorker worker)
             where TWorker : IDbWorker, IWebWorker
         {
             try
             {
-                var htmlDocuments = Task.WhenAll((await _databaseWorker.FillDbWithRssAsync(table, xml, worker))
+                var htmlDocuments = Task.WhenAll((await _databaseWorker.FillDbWithRssAsync(table, channel, worker))
                                                      .Select(async rssDataArticle => await GetArticleAsync(table, rssDataArticle, worker)));
                 return
                     new ReportData(await _databaseWorker.FillDbWithCompleteArticleAsync(table, await htmlDocuments), table);

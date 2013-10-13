@@ -45,10 +45,12 @@
     <Compile Include="IWebWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Worker.cs" />
+    <Compile Include="Workers\AnnewsRu.cs" />
     <Compile Include="Workers\InterfaxRu.cs" />
     <Compile Include="Workers\IzvestiaRu.cs" />
     <Compile Include="Workers\KommersantRu.cs" />
     <Compile Include="Workers\KorrespondentNet.cs" />
+    <Compile Include="Workers\RegnumRu.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

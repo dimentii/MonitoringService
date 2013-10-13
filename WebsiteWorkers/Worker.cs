@@ -131,7 +131,7 @@ namespace WebsiteWorkers
             return document.DocumentNode.SelectSingleNode("//meta[@property='og:description']");
         }
 
-        protected String GetDescriptionText(HtmlDocument document)
+        protected virtual String GetDescriptionText(HtmlDocument document)
         {
             var descriptionNode = GetDescriptionNode(document);
             if (descriptionNode == null)
@@ -144,7 +144,7 @@ namespace WebsiteWorkers
 
         #region Title part
 
-        protected String GetTitle(HtmlDocument document)
+        protected virtual String GetTitle(HtmlDocument document)
         {
             var titleNode = GetTitleNode(document);
             if (titleNode == null)
@@ -153,7 +153,7 @@ namespace WebsiteWorkers
             return CleanText(titleText);
         }
 
-        protected HtmlNode GetTitleNode(HtmlDocument document)
+        protected virtual HtmlNode GetTitleNode(HtmlDocument document)
         {
             return document.DocumentNode.SelectSingleNode("//meta[@property='og:title']");
         }

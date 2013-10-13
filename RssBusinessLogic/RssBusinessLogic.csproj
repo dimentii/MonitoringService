@@ -54,6 +54,9 @@
     <Compile Include="NinjectModules\BusinessLogicInjectionModule.cs" />
     <Compile Include="ReportData.cs" />
     <Compile Include="RssLoader.cs" />
+    <Compile Include="RSS\Channel.cs" />
+    <Compile Include="RSS\FeedData.cs" />
+    <Compile Include="RSS\FeedItem.cs" />
     <Compile Include="WebsiteInput.cs" />
     <Compile Include="WebsiteLoader.cs" />
     <Compile Include="WebsiteParser.cs" />

@@ -2,7 +2,7 @@
 {
     public enum RssLinkContainer
     {
-        Guid = 0,
-        Link = 1
+        Guid = 3,
+        Link = 4
     }
 }

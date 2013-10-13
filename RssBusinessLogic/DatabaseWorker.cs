@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLog;
 using RssBusinessLogic.Interfaces;
+using RssBusinessLogic.RSS;
 using RssDataAccessLayer.Interfaces;
 using WebsiteWorkers;
 
@@ -32,9 +34,9 @@ namespace RssBusinessLogic
         #region Public
 
         // Make sql query which checks if input data is already in table and return List of article's links 
-        public async Task<List<String>> FillDbWithRssAsync(String table, String xmlRss, IDbWorker dbWorker)
+        public async Task<List<String>> FillDbWithRssAsync(String table, Channel channel, IDbWorker dbWorker)
         {
-            if (xmlRss == null)
+            if (channel == null || channel.Data == null)
                 return null;
 
             try
@@ -53,19 +55,23 @@ namespace RssBusinessLogic
                         "constraint PK_{1} " +
                         "Primary Key(ID)" +
                         ") " +
-                        "declare @Xml xml set @Xml = '{0}' " +
+                        "declare @bufferTable Table " +
+                        "(Title nvarchar(max), " +
+                        "Descript nvarchar(max), " +
+                        "PublishDate nvarchar(100), " +
+                        "Link nvarchar(200))" +
+                        "insert into @bufferTable " +
+                        "(Title, Descript, PublishDate, Link) " +
+                        "values {0}" +
                         "insert into [dbo].[{1}] (Title, Descript, PublishDate, Link) " +
                         "output inserted.Link " +
-                        "select Item.value('title[1]', 'nvarchar(max)'), " +
-                        "Item.value('description[1]', 'nvarchar(max)'), " +
-                        "Item.value('pubDate[1]', 'nvarchar(100)'), " +
-                        "Item.value('{2}[1]', 'nvarchar(200)') " +
-                        "from @Xml.nodes('channel/item') as Result(Item) " +
+                        "select * " +
+                        "from @bufferTable as buf " +
                         "where not exists " +
                         "(select * " +
                         "from [dbo].[{1}] " +
-                        "where [Link] = Item.value('{2}[1]', 'nvarchar(200)'))",
-                        xmlRss.Replace('\'', '\"'), table, dbWorker.LinkContainer.ToString("g").ToLower());
+                        "where [Link] = buf.Link)",
+                        channel.ToString(((Int32)dbWorker.LinkContainer).ToString(CultureInfo.InvariantCulture)), table);
                 
                 var list = await _dataAccessLayer.FillRssAsync(sqlCommandString);
                 

@@ -96,3 +96,25 @@
 2013-10-09 23:49:09.7699|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 0 news
 2013-10-09 23:49:09.7699|INFO|RssBusinessLogic.BusinessLogic|Newspaper Korrespondent produced 1 news
 2013-10-09 23:49:09.7699|INFO|RssBusinessLogic.BusinessLogic|Newspaper Interfax produced 0 news
+2013-10-11 00:04:03.9741|INFO|RssBusinessLogic.BusinessLogic|Newspaper Regnum produced 0 news
+2013-10-11 00:12:42.9603|INFO|RssBusinessLogic.BusinessLogic|Newspaper Regnum produced 0 news
+2013-10-13 22:33:41.1163|ERROR|RssBusinessLogic.DatabaseWorker+<FillDbWithRssAsync>d__0|Error while writing to rss database for Regnum. Error message: Входная строка имела неверный формат.
+2013-10-13 22:33:41.3073|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Regnum at business logic. Error message: Значение не может быть неопределенным.
+Имя параметра: source
+2013-10-13 22:33:41.3073|INFO|RssBusinessLogic.BusinessLogic|Newspaper Regnum produced 0 news
+2013-10-13 22:35:09.2265|ERROR|RssBusinessLogic.DatabaseWorker+<FillDbWithRssAsync>d__0|Error while writing to rss database for Regnum. Error message: Входная строка имела неверный формат.
+2013-10-13 22:35:09.2733|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Regnum at business logic. Error message: Значение не может быть неопределенным.
+Имя параметра: source
+2013-10-13 22:35:09.2733|INFO|RssBusinessLogic.BusinessLogic|Newspaper Regnum produced 0 news
+2013-10-13 22:35:46.4092|ERROR|RssBusinessLogic.DatabaseWorker+<FillDbWithRssAsync>d__0|Error while writing to rss database for Regnum. Error message: Входная строка имела неверный формат.
+2013-10-13 22:35:46.4560|ERROR|RssBusinessLogic.BusinessLogic|Error while processing data for Regnum at business logic. Error message: Значение не может быть неопределенным.
+Имя параметра: source
+2013-10-13 22:35:46.4716|INFO|RssBusinessLogic.BusinessLogic|Newspaper Regnum produced 0 news
+2013-10-13 22:40:49.5120|INFO|RssBusinessLogic.BusinessLogic|Newspaper Regnum produced 30 news
+2013-10-13 22:42:23.3150|INFO|RssBusinessLogic.BusinessLogic|Newspaper Kommersant produced 0 news
+2013-10-13 22:42:24.2978|INFO|RssBusinessLogic.BusinessLogic|Newspaper Izvestia produced 1 news
+2013-10-13 22:42:25.0466|INFO|RssBusinessLogic.BusinessLogic|Newspaper Korrespondent produced 4 news
+2013-10-13 22:42:25.0466|INFO|RssBusinessLogic.BusinessLogic|Newspaper Interfax produced 1 news
+2013-10-13 22:42:25.0466|INFO|RssBusinessLogic.BusinessLogic|Newspaper Regnum produced 1 news
+2013-10-14 00:02:46.3041|INFO|RssBusinessLogic.BusinessLogic|Newspaper AnnewsRu produced 100 news
+2013-10-14 00:26:34.9450|INFO|RssBusinessLogic.BusinessLogic|Newspaper AnnewsRu produced 100 news

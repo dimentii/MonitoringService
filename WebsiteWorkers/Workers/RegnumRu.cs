@@ -4,12 +4,8 @@ using HtmlAgilityPack;
 
 namespace WebsiteWorkers.Workers
 {
-    public class KommersantRu : Worker
+    public class RegnumRu: Worker
     {
-        #region Constructor
-
-        #endregion
-
         #region Fields
 
         private readonly Encoding _websiteEncoding = Encoding.GetEncoding("windows-1251");
@@ -22,7 +18,7 @@ namespace WebsiteWorkers.Workers
         {
             get
             {
-                return RssLinkContainer.Guid;
+                return RssLinkContainer.Link;
             }
         }
 
@@ -40,30 +36,22 @@ namespace WebsiteWorkers.Workers
 
         protected override HtmlNode GetIntroNode(HtmlNode articleNode)
         {
-            return articleNode.SelectSingleNode("div[@class='document_vvodka']/text()");
+            return articleNode.SelectSingleNode("h1");
         }
 
         protected override HtmlNodeCollection GetAtricleNodes(HtmlNode articleNode)
         {
-            return articleNode.SelectNodes("div[@class='document_text']/text()");
+            return articleNode.SelectNodes("p");
         }
 
         protected override String GetAuthor(HtmlDocument document)
         {
-            var authorNode = GetAuthorNode(document);
-            if (authorNode == null)
-                return String.Empty;
-            return authorNode.InnerText;
+            return String.Empty;
         }
 
         protected override HtmlNode GetMainNode(HtmlDocument document)
         {
-            return document.GetElementbyId("divLetterBranding");
-        }
-
-        private HtmlNode GetAuthorNode(HtmlDocument document)
-        {
-            return document.DocumentNode.SelectSingleNode("//div[@class='document_authors vblock']");
+            return document.DocumentNode.SelectSingleNode("//div[@class='newsbody']");
         }
 
         #endregion

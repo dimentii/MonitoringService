@@ -19,10 +19,11 @@ namespace UnitTests.Init
 
         public List<FeedItem> LoadDocuments(List<FeedItem> articles, IWebWorker webWorker)
         {
-            var count = 0;
             var failedArticles = new List<FeedItem>();
+            var i = 0;
             foreach (var article in articles)
             {
+
                 var htmlDocument = new HtmlDocument();
                 var htmlString = GetHtmlAsString(article.Link, webWorker.WebsiteEncoding);
                 if (String.IsNullOrEmpty(htmlString))
@@ -32,7 +33,7 @@ namespace UnitTests.Init
                 }
                 htmlDocument.LoadHtml(htmlString);
                 article.Document = htmlDocument;
-                if (count++ > 5)
+                if (i++ > 5)
                     break;
             }
 
